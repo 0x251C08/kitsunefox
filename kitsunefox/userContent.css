@@ -1,0 +1,250 @@
+/* ==========================================================================
+ * kitsunefox — userContent.css
+ * Cosmetic ad/annoyance filters for web pages (companion to userChrome.css).
+ *
+ * INSTALL — same chrome/ folder as userChrome.css:
+ *   1. about:config → toolkit.legacyUserProfileCustomizations.stylesheets = true
+ *   2. about:profiles → open your profile's Root Directory → chrome/
+ *   3. Drop this file next to userChrome.css, restart Firefox
+ *
+ * NOTE — CSS hiding is cosmetic only: it removes elements from view but
+ * cannot block network requests. Pair with uBlock Origin (medium/hard mode
+ * plus its "annoyances" lists) for true blocking.
+ * ========================================================================== */
+
+/* --- a. Generic ad containers (attribute sniffing) --- */
+div[id^="ad-"], div[id*="-ad-"], div[id$="-ad"],
+div[class*="advert"], div[id*="advert"],
+div[class*="ad-banner"], div[id*="banner-ad"],
+div[class*="sponsor"], div[id*="sponsor"],
+div[class*="promoted"], div[class*="paid-content"],
+div[class*="taboola"], div[class*="outbrain"],
+div[class*="revcontent"], div[class*="mgid-"],
+div[class*="zergnet"], div[class*="sharethrough"],
+div[class*="sticky-ad"], div[id*="sticky-ad"],
+aside[class*="ad-"], aside[id*="ad-"],
+section[class*="sponsor"], section[id*="sponsor"] {
+  display: none !important;
+}
+
+/* --- b. Ad iframes & sponsored links (network-pattern sniffing) --- */
+iframe[src*="doubleclick"],
+iframe[src*="googlesyndication"],
+iframe[src*="googletagservices"],
+iframe[src*="adnxs"],
+iframe[src*="criteo"],
+iframe[src*="pubmatic"],
+iframe[src*="rubiconproject"],
+iframe[src*="amazon-adsystem"],
+iframe[src*="moatads"],
+iframe[src*="/ads/"],
+iframe[src*="://ads."],
+iframe[id*="google_ads"],
+a[href*="doubleclick"],
+a[href*="googlesyndication"],
+a[href*="/adclick"],
+img[src*="doubleclick"] {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  visibility: hidden !important;
+}
+
+/* --- c. Social widgets & trackers --- */
+iframe[src*="facebook.com/plugins/like"],
+iframe[src*="facebook.com/plugins/share"],
+iframe[src*="platform.twitter.com/widgets"],
+iframe[src*="linkedin.com/embed"],
+div[class*="fb-like"], div[class*="fb-share"] {
+  display: none !important;
+}
+
+/* --- d. Cookie / consent banners (common CMPs + generics) --- */
+#onetrust-consent-sdk, #onetrust-banner-sdk,
+#truste-consent-track, #consent_blackbar,
+.qc-cmp2-container, .qc-cmp-ui-container,
+#didomi-host, #didomi-popup,
+.osano-cm-window, .osano-cm-dialog,
+#iubenda-cs-banner, .iubenda-cs-container,
+#CybotCookiebotDialog, #CookiebotWidget,
+.cc-window, .cc-banner,
+div[id*="cookie-banner"], div[class*="cookie-banner"],
+div[id*="cookie-notice"], div[class*="cookie-notice"],
+div[class*="cookie-consent"], div[id*="cookie-consent"],
+div[class*="gdpr-banner"], div[id*="gdpr"],
+div[class*="consent-banner"], div[class*="consent-modal"],
+div[aria-label*="cookie" i], div[aria-label*="consent" i] {
+  display: none !important;
+}
+
+/* --- e. Newsletter / signup / nag modals --- */
+div[class*="newsletter-signup"], div[id*="newsletter-modal"],
+div[class*="newsletter-popup"], div[id*="newsletter-popup"],
+div[class*="email-capture"], div[class*="email-signup-modal"],
+div[class*="subscribe-modal"], div[id*="subscribe-popup"],
+div[class*="popup-overlay"], div[id*="popup-overlay"],
+div[class*="exit-intent"], div[class*="leadbox"] {
+  display: none !important;
+}
+
+/* --- f. Sticky video players & floating junk --- */
+div[class*="sticky-player"], div[id*="sticky-player"],
+div[class*="floating-video"], div[class*="slide-in-ad"],
+div[class*="bottom-ad"], div[id*="bottom-ad"] {
+  display: none !important;
+}
+
+/* --- g. Anti-adblock nag screens (cosmetic half of the fight) ---
+ * These only hide the nag; the site may still gate content behind JS.
+ * uBlock's "annoyances" lists handle the other half. */
+div[class*="adblock-detected"], div[id*="adblock-detected"],
+div[class*="ad-blocker"], div[id*="ad-blocker"],
+div[class*="disable-adblock"], div[class*="whitelist-us"] {
+  display: none !important;
+}
+
+/* --- h. Google ad units (direct tags, not just iframes) --- */
+ins.adsbygoogle,
+div[id*="google_ads_iframe"],
+div[id^="div-gpt-ad"],
+div[id*="div-gpt-ad"],
+div[data-ad-client],
+div[data-ad-slot],
+div[data-adblockkey] {
+  display: none !important;
+}
+
+/* --- i. More ad networks (video, native, in-app) --- */
+iframe[src*="teads"],
+iframe[src*="spotx"],
+iframe[src*="freewheel"],
+iframe[src*="stroeer"],
+iframe[src*="smartadserver"],
+iframe[src*="openx"],
+iframe[src*="indexww"],
+iframe[src*="sovrn"],
+iframe[src*="mediagridwork"],
+iframe[src*="triplelift"],
+iframe[src*="adform"],
+iframe[src*="yieldlab"],
+iframe[src*="improvedigital"],
+iframe[src*="adblade"],
+iframe[src*="engageya"],
+iframe[src*="plista"],
+iframe[src*="ligatus"],
+iframe[src*="seedtag"],
+iframe[src*="mobfox"],
+iframe[src*="smaato"],
+iframe[src*="inmobi"],
+iframe[src*="ironsource"],
+iframe[src*="applovin"],
+iframe[src*="mopub"],
+iframe[src*="loopme"],
+div[class*="teads-player"],
+div[class*="teads-inread"] {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  visibility: hidden !important;
+}
+
+/* --- j. Consent managers, round 2 (EU CMP long tail) --- */
+.klaro, #klaro,
+#tarteaucitronRoot, #tarteaucitronAlertBig,
+.cmplz-cookiebanner, .cmplz-blocked-content-container,
+.borlabs-cookie, #BorlabsCookieBox,
+#usercentrics-root,
+.cky-consent-container, .cky-modal,
+#cookiescript_injected, #cookiescript_badge,
+.ccc-notify, .ccc-module,
+#moove_gdpr_cookie_info_bar, .moove-gdpr-modal-content,
+.evidon-notice, .evidon-banner,
+#termly-code-snippet, .termly-styles,
+#ketch-consent, div[id*="ketch-"],
+div[class*="trustarc"], div[id*="trustarc"],
+div[class*="cookiepro"], div[id*="cookiepro"],
+div[class*="securiti"], div[id*="securiti"] {
+  display: none !important;
+}
+
+/* --- k. Chat / support widgets (heavy third-party trackers) ---
+ * Kills Intercom, Drift, HubSpot, Crisp, Zendesk, Tawk, LiveChat, Olark.
+ * Side effect: on-site support chat disappears too. That's the point. */
+#intercom-container, .intercom-launcher-frame, .intercom-messenger-frame,
+#drift-widget, #drift-widget-container,
+#hubspot-messages-iframe-container, .hs-shadow-container,
+#crisp-chatbox, .crisp-client,
+iframe[src*="zendesk.com/embeddable"],
+#zEWidget, .zEWidget-launcher,
+#tawkchat-container, #tawkchat-minified,
+#chat-widget-container, .livechat-widget,
+#olark-wrapper, .olark-launcher {
+  display: none !important;
+}
+
+/* --- l. Push-notification prompts --- */
+.onesignal-bell-launcher, #onesignal-bell-container,
+.onesignal-slidedown-container, #onesignal-slidedown-container,
+div[class*="push-prompt"], div[id*="push-prompt"],
+div[class*="push-notification"], div[id*="push-notification"],
+div[class*="web-push"], div[id*="web-push"] {
+  display: none !important;
+}
+
+/* --- m. Identity & captcha badges ---
+ * Hides Google's one-tap prompt and the reCAPTCHA badge. Challenges still
+ * function; only the floating badge is removed. */
+iframe[src*="accounts.google.com/gsi"],
+#credential_picker_container,
+.grecaptcha-badge {
+  display: none !important;
+}
+
+/* --- n. Sponsored / chumbox hardening (id forms + native formats) --- */
+div[id*="taboola"], div[id^="taboola-"],
+div[id*="outbrain"], div[id^="outbrain-"],
+div[class*="native-ad"], div[id*="native-ad"],
+div[class*="advertorial"],
+div[class*="paid-post"], div[class*="brand-post"],
+div[class*="sponsored-content"], div[class*="sponsored-links"],
+div[class*="sponsored-by"],
+div[class*="text-ads"], div[class*="textads"],
+div[class*="sidebar-ad"], div[id*="sidebar-ad"],
+div[class*="rail-ad"], div[id*="rail-ad"],
+div[class*="skyscraper-ad"] {
+  display: none !important;
+}
+
+/* --- o. Interstitials, takeovers, app banners, surveys, video overlays ---
+ * Caution: hiding interstitials can strand a page behind its own overlay
+ * gate. If a site goes blank, temporarily disable this file. */
+div[class*="interstitial"], div[id*="interstitial"],
+div[class*="takeover"],
+.smartbanner, #smartbanner,
+div[class*="app-banner"], div[id*="app-download-banner"],
+div[class*="survey-modal"], div[id*="survey-modal"],
+div[class*="video-ad"], div[class*="preroll"],
+.ima-ad-container, div[id*="ima-sdk"] {
+  display: none !important;
+}
+
+/* --- p. Consent-framework locator iframes (invisible TCF/USP hooks) --- */
+iframe[name="__tcfapiLocator"],
+iframe[name*="__uspapi"],
+iframe[src*="__tcfapiLocator"] {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* --- q. Exact-class + data-attribute generics (last-resort net) ---
+ * Kept strict on purpose: bare "ad" substrings are NEVER matched (they
+ * false-positive on words like "header" and "leads"). */
+.ad, .ads, #ads, #ad,
+.advertisement, #advertisement,
+.ad-container, .ads-container,
+[data-ad], [data-ads], [data-ad-unit], [data-ad-slot-container],
+div[aria-label*="advertisement" i],
+aside[aria-label*="sponsored" i] {
+  display: none !important;
+}

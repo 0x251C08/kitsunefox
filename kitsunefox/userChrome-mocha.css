@@ -1,0 +1,236 @@
+/* ==========================================================================
+ * kitsunefox — userChrome-mocha.css
+ * Catppuccin Mocha theme for Firefox's own interface.
+ * Page filters (palette-agnostic) live in userContent.css (same folder).
+ *
+ * INSTALL
+ *   1. about:config → toolkit.legacyUserProfileCustomizations.stylesheets = true
+ *   2. about:profiles → open your profile's Root Directory
+ *   3. Create a folder named `chrome` there, rename this file to
+ *      `userChrome.css`, drop it inside (plus userContent.css for filtering)
+ *   4. Restart Firefox
+ *
+ * NOTE — userChrome.css styles only Firefox's interface, never web pages.
+ * CSS cannot block network requests: pair with uBlock Origin (medium/hard).
+ * ========================================================================== */
+
+/* --------------------------------------------------------------------------
+ * 1. CATPPUCCIN MOCHA PALETTE
+ * -------------------------------------------------------------------------- */
+:root {
+  --ctp-rosewater: #f5e0dc;
+  --ctp-flamingo:  #f2cdcd;
+  --ctp-pink:      #f5c2e7;
+  --ctp-mauve:     #cba6f7;
+  --ctp-red:       #f38ba8;
+  --ctp-maroon:    #eba0ac;
+  --ctp-peach:     #fab387;
+  --ctp-yellow:    #f9e2af;
+  --ctp-green:     #a6e3a1;
+  --ctp-teal:      #94e2d5;
+  --ctp-sky:       #89dceb;
+  --ctp-sapphire:  #74c7ec;
+  --ctp-blue:      #89b4fa;
+  --ctp-lavender:  #b4befe;
+  --ctp-text:      #cdd6f4;
+  --ctp-subtext1:  #bac2de;
+  --ctp-subtext0:  #a6adc8;
+  --ctp-overlay2:  #9399b2;
+  --ctp-overlay1:  #7f849c;
+  --ctp-overlay0:  #6c7086;
+  --ctp-surface2:  #585b70;
+  --ctp-surface1:  #45475a;
+  --ctp-surface0:  #313244;
+  --ctp-base:      #1e1e2e;
+  --ctp-mantle:    #181825;
+  --ctp-crust:     #11111b;
+
+  --kitsune-accent: var(--ctp-mauve);
+  --kitsune-accent-soft: color-mix(in srgb, var(--ctp-mauve) 22%, transparent);
+
+  /* Map Firefox's built-in theme variables so stock UI follows Mocha. */
+  --toolbar-bgcolor: var(--ctp-base) !important;
+  --toolbar-color: var(--ctp-text) !important;
+  --toolbar-field-background-color: var(--ctp-mantle) !important;
+  --toolbar-field-color: var(--ctp-text) !important;
+  --toolbar-field-focus-background-color: var(--ctp-crust) !important;
+  --toolbar-field-focus-border-color: var(--kitsune-accent) !important;
+  --lwt-accent-color: var(--ctp-crust) !important;
+  --lwt-text-color: var(--ctp-text) !important;
+  --lwt-toolbar-field-highlight: var(--kitsune-accent-soft) !important;
+  --lwt-toolbar-field-highlight-text: var(--ctp-text) !important;
+  --tab-selected-bgcolor: var(--ctp-surface0) !important;
+  --tab-selected-textcolor: var(--ctp-text) !important;
+  --arrowpanel-background: var(--ctp-mantle) !important;
+  --arrowpanel-color: var(--ctp-text) !important;
+  --arrowpanel-border-color: var(--ctp-surface0) !important;
+  --panel-separator-color: var(--ctp-surface0) !important;
+  --button-background-color-hover: var(--ctp-surface0) !important;
+}
+
+/* Dark scrollbars across chrome */
+* {
+  scrollbar-color: var(--ctp-surface1) var(--ctp-crust) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 2. TOOLBOX / TAB BAR
+ * -------------------------------------------------------------------------- */
+#navigator-toolbox {
+  background: var(--ctp-crust) !important;
+  border-bottom: 1px solid var(--ctp-surface0) !important;
+}
+
+#TabsToolbar {
+  background: var(--ctp-crust) !important;
+}
+
+/* Inactive tabs */
+.tabbrowser-tab .tab-background {
+  background: transparent !important;
+  border-radius: 8px !important;
+  margin-block: 3px !important;
+}
+.tabbrowser-tab:hover .tab-background {
+  background: var(--ctp-surface0) !important;
+}
+
+/* Active tab — surface fill + accent top edge */
+.tabbrowser-tab[selected="true"] .tab-background {
+  background: var(--ctp-surface0) !important;
+  box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important;
+}
+.tabbrowser-tab[selected="true"] .tab-label {
+  color: var(--ctp-text) !important;
+  font-weight: 600 !important;
+}
+.tabbrowser-tab:not([selected="true"]) .tab-label {
+  color: var(--ctp-subtext0) !important;
+}
+
+/* Kill the default tab separators, tint the close button on hover */
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+  display: none !important;
+}
+.tab-close-button:hover {
+  background: var(--ctp-red) !important;
+  color: var(--ctp-crust) !important;
+}
+
+/* Audio-playing tab indicator */
+.tab-icon-overlay[indicator-replaces-favicon],
+.tab-icon-sound {
+  color: var(--ctp-mauve) !important;
+}
+
+/* New-tab button + all-tabs button */
+#tabs-newtab-button:hover,
+#alltabs-button:hover {
+  background: var(--ctp-surface0) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 3. NAV BAR / URL BAR
+ * -------------------------------------------------------------------------- */
+#nav-bar {
+  background: var(--ctp-base) !important;
+  box-shadow: none !important;
+}
+
+#urlbar {
+  --urlbar-box-bgcolor: var(--ctp-surface0) !important;
+}
+#urlbar-background {
+  background: var(--ctp-mantle) !important;
+  border: 1px solid var(--ctp-surface0) !important;
+  border-radius: 8px !important;
+}
+#urlbar[focused="true"] #urlbar-background {
+  border-color: var(--kitsune-accent) !important;
+  box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important;
+}
+#urlbar-input {
+  color: var(--ctp-text) !important;
+}
+
+/* Identity box + tracking shield: green when protected */
+#identity-box[pageproxystate="valid"] {
+  color: var(--ctp-subtext1) !important;
+}
+#tracking-protection-icon-box[hasException],
+#tracking-protection-icon-box[active] {
+  color: var(--ctp-green) !important;
+}
+
+/* Toolbar buttons */
+.toolbarbutton-1:hover,
+.toolbarbutton-icon:hover,
+#bookmarks-menu-button:hover {
+  background: var(--ctp-surface0) !important;
+  color: var(--ctp-text) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 4. BOOKMARKS BAR / SIDEBAR / FIND BAR / PANELS
+ * -------------------------------------------------------------------------- */
+#PersonalToolbar {
+  background: var(--ctp-base) !important;
+  color: var(--ctp-subtext1) !important;
+}
+#PersonalToolbar .bookmark-item:hover {
+  background: var(--ctp-surface0) !important;
+}
+
+#sidebar-box {
+  background: var(--ctp-mantle) !important;
+}
+#sidebar-header {
+  background: var(--ctp-crust) !important;
+  color: var(--ctp-text) !important;
+  border-bottom: 1px solid var(--ctp-surface0) !important;
+}
+
+findbar {
+  background: var(--ctp-mantle) !important;
+  color: var(--ctp-text) !important;
+  border-top: 1px solid var(--ctp-surface0) !important;
+}
+.findbar-textbox {
+  background: var(--ctp-crust) !important;
+  color: var(--ctp-text) !important;
+  border: 1px solid var(--ctp-surface0) !important;
+}
+.findbar-textbox[focused="true"] {
+  border-color: var(--kitsune-accent) !important;
+}
+
+/* Menus + arrow panels */
+menupopup,
+panel {
+  --panel-background: var(--ctp-mantle) !important;
+  --panel-color: var(--ctp-text) !important;
+}
+menupopup menuitem:hover,
+menupopup menu:hover {
+  background: var(--ctp-surface0) !important;
+  color: var(--ctp-text) !important;
+}
+
+/* Private-browsing indicator tint */
+#private-browsing-indicator-with-label {
+  color: var(--ctp-mauve) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 5. OPTIONAL UI TOGGLES — uncomment what you want gone
+ * -------------------------------------------------------------------------- */
+/* Hide Firefox View button          */ /* #firefox-view-button { display: none !important; } */
+/* Hide List-All-Tabs button         */ /* #alltabs-button { display: none !important; } */
+/* Hide tab close buttons (middle-click still closes) */
+                                          /* .tab-close-button { display: none !important; } */
+/* Hide bookmark star in urlbar      */ /* #star-button-box { display: none !important; } */
+/* Hide Pocket-era leftover bits     */ /* #pocket-button { display: none !important; } */
+/* Compact tab height                */ /* :root { --tab-min-height: 30px !important; } */
+
+/* Page ad/annoyance filters live in the companion userContent.css file. */
