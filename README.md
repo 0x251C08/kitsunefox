@@ -10,16 +10,16 @@ A hardened + themed Firefox configuration focused on privacy, reduced browser no
 
 It is **not** a Firefox fork and **not** a browser extension.
 
-## v0.1.0
+## v0.2.0
 
-The first public release establishes the basic kitsunefox layout:
+33 themes + hardened `user.js` + cosmetic `userContent.css`. New in v0.2.0: `retro82`, `cp437-dos`, `hackerman`, `sakura` (#ff9cae), `zenburn`, `tokyo-night-storm`, `material3-expressive`, `oceanic-next`, `gruvbox-material`, `moonlight`.
 
 ```text
 kitsunefox/
 ├── user.js
 ├── userContent.css
-├── userChrome-*.css
-└── theme directories/
+├── userChrome-*.css          # catppuccin frappe/latte/macchiato/mocha
+└── <theme>/userChrome.css    # 33 theme directories (see below)
 ````
 
 ### Tested on
@@ -59,24 +59,39 @@ The file is commented so the purpose and expected breakage of stricter settings 
 
 ### Firefox interface themes
 
-kitsunefox includes multiple `userChrome.css` styles for Firefox's own interface.
+kitsunefox includes 37 `userChrome.css` styles for Firefox's own interface (33 theme dirs + 4 Catppuccin root files).
 
-Themes and palettes currently include variants based around:
+| Theme | Vibe |
+|---|---|
+| `amberbyte` | warm amber |
+| `arc-blueberry` | Arc blue |
+| `ayu` / `ayu-dark` / `ayu-light` / `ayu-mirage` | Ayu variants |
+| `base16` / `base16-light` | Base16 |
+| `bluedotrb` | blue dot |
+| `cp437-dos` *(new)* | DOS amber/CP437 terminal |
+| `cyberpunk` | neon 2077 |
+| `everforest` | forest |
+| `github-dark` | GitHub dark |
+| `gruvbox` / `gruvbox-light` / `gruvbox-v2` / `gruvbox-material` *(new)* | Gruvbox variants |
+| `hackerman` *(new)* | green phosphor |
+| `kanagawa` | Kanagawa wave |
+| `material3-expressive` *(new)* | M3 Expressive |
+| `monokai` | Monokai |
+| `moonlight` *(new)* | indigo moonlight |
+| `nord` | Nord |
+| `oceanic-next` *(new)* | Oceanic Next |
+| `onedark` | One Dark |
+| `osaka-jade` | Osaka jade |
+| `retro82` *(new)* | 80s synthwave |
+| `rose-pine` | Rosé Pine |
+| `sakura` *(new)* | #ff9cae soft pink |
+| `solitude` | solitude |
+| `tokyo-night` / `tokyo-night-storm` *(new)* | Tokyo Night variants |
+| `vantablack` | pure black |
+| `zenburn` *(new)* | low-contrast Zenburn |
+| `userChrome-frappe/latte/macchiato/mocha.css` | Catppuccin |
 
-* Catppuccin
-* Gruvbox
-* Nord
-* Tokyo Night
-* Kanagawa
-* Everforest
-* One Dark
-* Rose Pine
-* Ayu
-* Cyberpunk
-* GitHub Dark
-* Base16
-
-and additional styles included in the repository.
+Pick one: `cp <theme>/userChrome.css chrome/userChrome.css` (see Installation §5).
 
 These can change Firefox UI elements such as:
 
@@ -305,7 +320,7 @@ For a completely clean state, creating a new Firefox profile is the simplest opt
 * `userChrome.css` relies on Firefox's legacy browser UI customization support and may require maintenance after Firefox UI changes.
 * `userContent.css` performs cosmetic hiding rather than network-level blocking.
 * Strict `user.js` settings intentionally reduce compatibility with some sites and browser features.
-* v0.1.0 has currently been explicitly tested on Firefox 155 and Waterfox 6.7.3 under Arch Linux.
+* v0.2.0 tested on Firefox 155 / Waterfox 6.7.3 (Arch). New themes smoke-tested; no functional change to `user.js`/`userContent.css` from v0.1.0.
 
 No other known bugs are currently documented.
 
