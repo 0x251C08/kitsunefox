@@ -1,0 +1,208 @@
+/* ==========================================================================
+ * kitsunefox / oceanic-next — userChrome.css
+ * Oceanic Next — deep ocean blue with Base16 oceanic palette.
+ * ========================================================================== */
+:root {
+  --ocn-bg: #0e1a24;
+  --ocn-deep: #0a141e;
+  --ocn-surface: #162634;
+  --ocn-surface1: #1b3242;
+  --ocn-fg: #c5d4dd;
+  --ocn-muted: #65737e;
+  --ocn-accent: #6699cc;
+  --ocn-cyan: #5fb3b3;
+  --ocn-green: #99c794;
+  --ocn-yellow: #fac863;
+  --ocn-orange: #f99157;
+  --ocn-red: #ec5f67;
+  --ocn-blue: var(--ocn-accent);
+  --ocn-purple: var(--ocn-accent);
+  --kitsune-accent: var(--ocn-accent);
+  --ocn-blue: var(--ocn-accent);
+  --kitsune-accent-soft: color-mix(in srgb, var(--ocn-accent) 18%, transparent);
+  --toolbar-bgcolor: var(--ocn-bg) !important;
+  --toolbar-color: var(--ocn-fg) !important;
+  --toolbar-field-background-color: var(--ocn-deep) !important;
+  --toolbar-field-color: var(--ocn-fg) !important;
+  --toolbar-field-focus-background-color: var(--ocn-deep) !important;
+  --toolbar-field-focus-border-color: var(--kitsune-accent) !important;
+  --lwt-accent-color: var(--ocn-deep) !important;
+  --lwt-text-color: var(--ocn-fg) !important;
+  --lwt-toolbar-field-highlight: var(--kitsune-accent-soft) !important;
+  --tab-selected-bgcolor: var(--ocn-surface) !important;
+  --arrowpanel-background: var(--ocn-deep) !important;
+  --arrowpanel-color: var(--ocn-fg) !important;
+  --arrowpanel-border-color: var(--ocn-surface) !important;
+  --panel-separator-color: var(--ocn-surface) !important;
+  --button-background-color-hover: var(--ocn-surface) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 2. TOOLBOX / TAB BAR
+ * -------------------------------------------------------------------------- */
+#navigator-toolbox {
+  background: var(--ocn-deep) !important;
+  border-bottom: 1px solid var(--ocn-surface) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 2. TOOLBOX / TAB BAR
+ * -------------------------------------------------------------------------- */
+#navigator-toolbox {
+  background: var(--ocn-deep) !important;
+  border-bottom: 1px solid var(--ocn-surface) !important;
+}
+
+#TabsToolbar {
+  background: var(--ocn-deep) !important;
+}
+
+/* Inactive tabs */
+.tabbrowser-tab .tab-background {
+  background: transparent !important;
+  border-radius: 8px !important;
+  margin-block: 3px !important;
+}
+.tabbrowser-tab:hover .tab-background {
+  background: var(--ocn-surface) !important;
+}
+
+/* Active tab — surface fill + accent top edge */
+.tabbrowser-tab[selected="true"] .tab-background {
+  background: var(--ocn-surface) !important;
+  box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important;
+}
+.tabbrowser-tab[selected="true"] .tab-label {
+  color: var(--ocn-fg) !important;
+  font-weight: 600 !important;
+}
+.tabbrowser-tab:not([selected="true"]) .tab-label {
+  color: var(--ocn-muted) !important;
+}
+
+/* Kill the default tab separators, tint the close button on hover */
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+  display: none !important;
+}
+.tab-close-button:hover {
+  background: var(--ocn-red) !important;
+  color: var(--ocn-deep) !important;
+}
+
+/* Audio-playing tab indicator */
+.tab-icon-overlay[indicator-replaces-favicon],
+.tab-icon-sound {
+  color: var(--kitsune-accent) !important;
+}
+
+/* New-tab button + all-tabs button */
+#tabs-newtab-button:hover,
+#alltabs-button:hover {
+  background: var(--ocn-surface) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 3. NAV BAR / URL BAR
+ * -------------------------------------------------------------------------- */
+#nav-bar {
+  background: var(--ocn-bg) !important;
+  box-shadow: none !important;
+}
+
+#urlbar {
+  --urlbar-box-bgcolor: var(--ocn-surface) !important;
+}
+#urlbar-background {
+  background: var(--ocn-deep) !important;
+  border: 1px solid var(--ocn-surface) !important;
+  border-radius: 8px !important;
+}
+#urlbar[focused="true"] #urlbar-background {
+  border-color: var(--kitsune-accent) !important;
+  box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important;
+}
+#urlbar-input {
+  color: var(--ocn-fg) !important;
+}
+
+/* Identity box + tracking shield: green when protected */
+#identity-box[pageproxystate="valid"] {
+  color: var(--ocn-fg) !important;
+}
+#tracking-protection-icon-box[hasException],
+#tracking-protection-icon-box[active] {
+  color: var(--ocn-green) !important;
+}
+
+/* Toolbar buttons */
+.toolbarbutton-1:hover,
+.toolbarbutton-icon:hover,
+#bookmarks-menu-button:hover {
+  background: var(--ocn-surface) !important;
+  color: var(--ocn-fg) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 4. BOOKMARKS BAR / SIDEBAR / FIND BAR / PANELS
+ * -------------------------------------------------------------------------- */
+#PersonalToolbar {
+  background: var(--ocn-bg) !important;
+  color: var(--ocn-fg) !important;
+}
+#PersonalToolbar .bookmark-item:hover {
+  background: var(--ocn-surface) !important;
+}
+
+#sidebar-box {
+  background: var(--ocn-deep) !important;
+}
+#sidebar-header {
+  background: var(--ocn-deep) !important;
+  color: var(--ocn-fg) !important;
+  border-bottom: 1px solid var(--ocn-surface) !important;
+}
+
+findbar {
+  background: var(--ocn-deep) !important;
+  color: var(--ocn-fg) !important;
+  border-top: 1px solid var(--ocn-surface) !important;
+}
+.findbar-textbox {
+  background: var(--ocn-deep) !important;
+  color: var(--ocn-fg) !important;
+  border: 1px solid var(--ocn-surface) !important;
+}
+.findbar-textbox[focused="true"] {
+  border-color: var(--kitsune-accent) !important;
+}
+
+/* Menus + arrow panels */
+menupopup,
+panel {
+  --panel-background: var(--ocn-deep) !important;
+  --panel-color: var(--ocn-fg) !important;
+}
+menupopup menuitem:hover,
+menupopup menu:hover {
+  background: var(--ocn-surface) !important;
+  color: var(--ocn-fg) !important;
+}
+
+/* Private-browsing indicator tint */
+#private-browsing-indicator-with-label {
+  color: var(--ocn-purple) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 5. OPTIONAL UI TOGGLES — uncomment what you want gone
+ * -------------------------------------------------------------------------- */
+/* Hide Firefox View button          */ /* #firefox-view-button { display: none !important; } */
+/* Hide List-All-Tabs button         */ /* #alltabs-button { display: none !important; } */
+/* Hide tab close buttons (middle-click still closes) */
+/* .tab-close-button { display: none !important; } */
+/* Hide bookmark star in urlbar      */ /* #star-button-box { display: none !important; } */
+/* Hide Pocket-era leftover bits     */ /* #pocket-button { display: none !important; } */
+/* Compact tab height                */ /* :root { --tab-min-height: 30px !important; } */
+
+/* Page ad/annoyance filters live in the companion ../userContent.css file. */

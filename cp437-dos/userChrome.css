@@ -1,0 +1,322 @@
+/* ==========================================================================
+ * kitsunefox / cp437-dos — userChrome.css
+ * DOS/CP437 code page theme: amber or green monochrome on black.
+ * Block characters, scanlines, 80x25 terminal vibe.
+ * ========================================================================== */
+
+/* --------------------------------------------------------------------------
+ * 1. CP437-DOS PALETTE (DOS terminal composed palette)
+ * -------------------------------------------------------------------------- */
+:root {
+  --dos-bg: #000000;
+  --dos-deep: #000000;
+  --dos-surface: #0a0a0a;
+  --dos-surface1: #141414;
+  --dos-fg: #cccccc;
+  --dos-muted: #666666;
+  --dos-amber: #cc8800;
+  --dos-amber-bright: #ffaa00;
+  --dos-green: #00cc00;
+  --dos-green-bright: #00ff00;
+  --dos-white: #ffffff;
+  --dos-gray: #808080;
+  --dos-dark-gray: #404040;
+  --dos-cursor: #ffaa00;
+
+  /* Choose amber or green mode by changing this variable */
+  --dos-mode: amber; /* or 'green' */
+
+  --kitsune-accent: var(--dos-amber);
+  --kitsune-accent-bright: var(--dos-amber-bright);
+  --kitsune-accent-soft: color-mix(in srgb, var(--dos-amber) 15%, transparent);
+
+  --toolbar-bgcolor: var(--dos-bg) !important;
+  --toolbar-color: var(--dos-fg) !important;
+  --toolbar-field-background-color: var(--dos-deep) !important;
+  --toolbar-field-color: var(--dos-fg) !important;
+  --toolbar-field-focus-background-color: var(--dos-deep) !important;
+  --toolbar-field-focus-border-color: var(--kitsune-accent) !important;
+  --lwt-accent-color: var(--dos-deep) !important;
+  --lwt-text-color: var(--dos-fg) !important;
+  --lwt-toolbar-field-highlight: var(--kitsune-accent-soft) !important;
+  --lwt-toolbar-field-highlight-text: var(--dos-fg) !important;
+  --tab-selected-bgcolor: var(--dos-surface) !important;
+  --tab-selected-textcolor: var(--dos-fg) !important;
+  --arrowpanel-background: var(--dos-deep) !important;
+  --arrowpanel-color: var(--dos-fg) !important;
+  --arrowpanel-border-color: var(--dos-surface) !important;
+  --panel-separator-color: var(--dos-surface) !important;
+  --button-background-color-hover: var(--dos-surface) !important;
+}
+
+/* Green mode override */
+:root[dos-mode="green"] {
+  --kitsune-accent: var(--dos-green);
+  --kitsune-accent-bright: var(--dos-green-bright);
+  --kitsune-accent-soft: color-mix(in srgb, var(--dos-green) 15%, transparent);
+}
+
+/* DOS monospace font stack */
+:root {
+  --dos-font:
+    "IBM Plex Mono", "JetBrains Mono", "Fira Mono", "Consolas", "Monospace";
+}
+
+/* Scrollbars - DOS style */
+* {
+  scrollbar-color: var(--dos-dark-gray) var(--dos-bg) !important;
+  scrollbar-width: thin !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 2. TOOLBOX / TAB BAR
+ * -------------------------------------------------------------------------- */
+#navigator-toolbox {
+  background: var(--dos-bg) !important;
+  border-bottom: 1px solid var(--kitsune-accent) !important;
+  font-family: var(--dos-font) !important;
+}
+
+#TabsToolbar {
+  background: var(--dos-bg) !important;
+  border-bottom: 1px solid var(--dos-dark-gray) !important;
+}
+
+.tabbrowser-tab .tab-background {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 0 !important;
+  margin-block: 0 !important;
+}
+.tabbrowser-tab:hover .tab-background {
+  background: var(--dos-surface) !important;
+}
+
+.tabbrowser-tab[selected="true"] .tab-background {
+  background: var(--dos-surface) !important;
+  border-bottom: 2px solid var(--kitsune-accent) !important;
+  box-shadow: inset 0 -2px 0 0 var(--kitsune-accent) !important;
+}
+.tabbrowser-tab[selected="true"] .tab-label {
+  color: var(--kitsune-accent-bright) !important;
+  font-weight: 700 !important;
+}
+.tabbrowser-tab:not([selected="true"]) .tab-label {
+  color: var(--dos-muted) !important;
+}
+
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+  display: none !important;
+}
+.tab-close-button {
+  color: var(--dos-muted) !important;
+}
+.tab-close-button:hover {
+  background: var(--dos-surface1) !important;
+  color: var(--dos-white) !important;
+}
+
+.tab-icon-overlay[indicator-replaces-favicon],
+.tab-icon-sound {
+  color: var(--kitsune-accent) !important;
+}
+
+#tabs-newtab-button,
+#alltabs-button {
+  color: var(--dos-muted) !important;
+}
+#tabs-newtab-button:hover,
+#alltabs-button:hover {
+  background: var(--dos-surface) !important;
+  color: var(--kitsune-accent-bright) !important;
+}
+
+/* Tab text - monospace, uppercase terminal style */
+.tab-label {
+  font-family: var(--dos-font) !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 3. NAV BAR / URL BAR
+ * -------------------------------------------------------------------------- */
+#nav-bar {
+  background: var(--dos-bg) !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid var(--dos-dark-gray) !important;
+  padding: 2px 4px !important;
+}
+
+#urlbar {
+  --urlbar-box-bgcolor: var(--dos-surface) !important;
+  font-family: var(--dos-font) !important;
+}
+#urlbar-background {
+  background: var(--dos-bg) !important;
+  border: 1px solid var(--dos-dark-gray) !important;
+  border-radius: 0 !important;
+}
+#urlbar[focused="true"] #urlbar-background {
+  border-color: var(--kitsune-accent) !important;
+  box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important;
+}
+#urlbar-input {
+  color: var(--dos-fg) !important;
+  font-family: var(--dos-font) !important;
+  font-size: 13px !important;
+}
+#urlbar[focused="true"] #urlbar-input {
+  color: var(--kitsune-accent-bright) !important;
+  caret-color: var(--dos-cursor) !important;
+}
+
+/* Identity box */
+#identity-box {
+  color: var(--dos-muted) !important;
+}
+#identity-box[pageproxystate="valid"] {
+  color: var(--kitsune-accent) !important;
+}
+
+/* Tracking protection */
+#tracking-protection-icon-box[hasException],
+#tracking-protection-icon-box[active] {
+  color: var(--kitsune-accent) !important;
+}
+
+/* Toolbar buttons */
+.toolbarbutton-1,
+.toolbarbutton-icon,
+#bookmarks-menu-button {
+  color: var(--dos-muted) !important;
+}
+.toolbarbutton-1:hover,
+.toolbarbutton-icon:hover,
+#bookmarks-menu-button:hover {
+  background: var(--dos-surface) !important;
+  color: var(--kitsune-accent-bright) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 4. BOOKMARKS BAR / SIDEBAR / FIND BAR / PANELS
+ * -------------------------------------------------------------------------- */
+#PersonalToolbar {
+  background: var(--dos-bg) !important;
+  color: var(--dos-fg) !important;
+  border-top: 1px solid var(--dos-dark-gray) !important;
+  border-bottom: 1px solid var(--dos-dark-gray) !important;
+  font-family: var(--dos-font) !important;
+  font-size: 12px !important;
+}
+#PersonalToolbar .bookmark-item {
+  color: var(--dos-muted) !important;
+  border-radius: 0 !important;
+  margin: 0 2px !important;
+}
+#PersonalToolbar .bookmark-item:hover {
+  background: var(--dos-surface) !important;
+  color: var(--kitsune-accent-bright) !important;
+}
+#PersonalToolbar .bookmark-item > .toolbarbutton-text {
+  text-transform: uppercase !important;
+}
+
+#sidebar-box {
+  background: var(--dos-bg) !important;
+  border-right: 1px solid var(--dos-dark-gray) !important;
+}
+#sidebar-header {
+  background: var(--dos-bg) !important;
+  color: var(--kitsune-accent-bright) !important;
+  border-bottom: 1px solid var(--kitsune-accent) !important;
+  font-family: var(--dos-font) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+findbar {
+  background: var(--dos-bg) !important;
+  color: var(--dos-fg) !important;
+  border-top: 1px solid var(--dos-dark-gray) !important;
+  font-family: var(--dos-font) !important;
+}
+.findbar-textbox {
+  background: var(--dos-bg) !important;
+  color: var(--dos-fg) !important;
+  border: 1px solid var(--dos-dark-gray) !important;
+  border-radius: 0 !important;
+}
+.findbar-textbox[focused="true"] {
+  border-color: var(--kitsune-accent) !important;
+}
+
+menupopup,
+panel {
+  --panel-background: var(--dos-bg) !important;
+  --panel-color: var(--dos-fg) !important;
+  --panel-border-color: var(--dos-dark-gray) !important;
+  font-family: var(--dos-font) !important;
+  border: 1px solid var(--dos-dark-gray) !important;
+}
+menupopup menuitem,
+menupopup menu {
+  padding: 4px 16px !important;
+}
+menupopup menuitem:hover,
+menupopup menu:hover {
+  background: var(--dos-surface) !important;
+  color: var(--kitsune-accent-bright) !important;
+}
+menupopup menuseparator {
+  border-top: 1px solid var(--dos-dark-gray) !important;
+  margin: 4px 8px !important;
+}
+
+#private-browsing-indicator-with-label {
+  color: var(--dos-amber) !important;
+  font-family: var(--dos-font) !important;
+  text-transform: uppercase !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 5. TERMINAL SCANLINE OVERLAY (optional, subtle)
+ * -------------------------------------------------------------------------- */
+#browser::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 2147483647;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  opacity: 0.5;
+}
+
+/* --------------------------------------------------------------------------
+ * 6. OPTIONAL UI TOGGLES
+ * -------------------------------------------------------------------------- */
+/* #firefox-view-button { display: none !important; } */
+/* #alltabs-button { display: none !important; } */
+/* .tab-close-button { display: none !important; } */
+/* #star-button-box { display: none !important; } */
+/* #pocket-button { display: none !important; } */
+/* :root { --tab-min-height: 24px !important; } */
+
+/* ==========================================================================
+ * TO SWITCH TO GREEN MODE:
+ * Add to your user.js or about:config:
+ *   user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+ * Then add this to userChrome.css before @namespace:
+ *   :root { --dos-mode: green; }
+ * ========================================================================== */

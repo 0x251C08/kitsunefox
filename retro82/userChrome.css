@@ -1,0 +1,208 @@
+/* ==========================================================================
+ * kitsunefox / retro82 — userChrome.css
+ * 80s Synthwave/Retrowave-inspired theme for Firefox's interface.
+ * Neon magentas, cyans, and deep purples on near-black.
+ * ========================================================================== */
+
+/* --------------------------------------------------------------------------
+ * 1. RETRO82 PALETTE (Synthwave/Retrowave composed palette)
+ * -------------------------------------------------------------------------- */
+:root {
+  --r82-bg: #0a0412;
+  --r82-deep: #050208;
+  --r82-surface: #1a0a2e;
+  --r82-surface1: #2d1b4e;
+  --r82-fg: #ffe4ff;
+  --r82-muted: #8a6d9c;
+  --r82-magenta: #ff00ff;
+  --r82-cyan: #00ffff;
+  --r82-pink: #ff1493;
+  --r82-orange: #ff6b00;
+  --r82-purple: #8b00ff;
+  --r82-blue: #0066ff;
+
+  --kitsune-accent: var(--r82-magenta);
+  --kitsune-accent-soft: color-mix(
+    in srgb,
+    var(--r82-magenta) 18%,
+    transparent
+  );
+
+  --toolbar-bgcolor: var(--r82-bg) !important;
+  --toolbar-color: var(--r82-fg) !important;
+  --toolbar-field-background-color: var(--r82-deep) !important;
+  --toolbar-field-color: var(--r82-fg) !important;
+  --toolbar-field-focus-background-color: var(--r82-deep) !important;
+  --toolbar-field-focus-border-color: var(--kitsune-accent) !important;
+  --lwt-accent-color: var(--r82-deep) !important;
+  --lwt-text-color: var(--r82-fg) !important;
+  --lwt-toolbar-field-highlight: var(--kitsune-accent-soft) !important;
+  --lwt-toolbar-field-highlight-text: var(--r82-fg) !important;
+  --tab-selected-bgcolor: var(--r82-surface) !important;
+  --tab-selected-textcolor: var(--r82-fg) !important;
+  --arrowpanel-background: var(--r82-deep) !important;
+  --arrowpanel-color: var(--r82-fg) !important;
+  --arrowpanel-border-color: var(--r82-surface) !important;
+  --panel-separator-color: var(--r82-surface) !important;
+  --button-background-color-hover: var(--r82-surface) !important;
+}
+
+/* Dark scrollbars */
+* {
+  scrollbar-color: var(--r82-surface1) var(--r82-deep) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 2. TOOLBOX / TAB BAR
+ * -------------------------------------------------------------------------- */
+#navigator-toolbox {
+  background: var(--r82-deep) !important;
+  border-bottom: 1px solid var(--r82-surface) !important;
+}
+
+#TabsToolbar {
+  background: var(--r82-deep) !important;
+}
+
+.tabbrowser-tab .tab-background {
+  background: transparent !important;
+  border-radius: 6px !important;
+  margin-block: 3px !important;
+}
+.tabbrowser-tab:hover .tab-background {
+  background: var(--r82-surface) !important;
+}
+
+.tabbrowser-tab[selected="true"] .tab-background {
+  background: var(--r82-surface) !important;
+  box-shadow:
+    inset 0 2px 0 0 var(--r82-magenta),
+    0 0 12px color-mix(in srgb, var(--r82-magenta) 40%, transparent) !important;
+}
+.tabbrowser-tab[selected="true"] .tab-label {
+  color: var(--r82-fg) !important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 8px var(--r82-magenta) !important;
+}
+.tabbrowser-tab:not([selected="true"]) .tab-label {
+  color: var(--r82-muted) !important;
+}
+
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+  display: none !important;
+}
+.tab-close-button:hover {
+  background: var(--r82-pink) !important;
+  color: var(--r82-deep) !important;
+}
+
+.tab-icon-overlay[indicator-replaces-favicon],
+.tab-icon-sound {
+  color: var(--r82-cyan) !important;
+}
+
+#tabs-newtab-button:hover,
+#alltabs-button:hover {
+  background: var(--r82-surface) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 3. NAV BAR / URL BAR
+ * -------------------------------------------------------------------------- */
+#nav-bar {
+  background: var(--r82-bg) !important;
+  box-shadow: none !important;
+}
+
+#urlbar {
+  --urlbar-box-bgcolor: var(--r82-surface) !important;
+}
+#urlbar-background {
+  background: var(--r82-deep) !important;
+  border: 1px solid var(--r82-surface) !important;
+  border-radius: 8px !important;
+}
+#urlbar[focused="true"] #urlbar-background {
+  border-color: var(--r82-magenta) !important;
+  box-shadow:
+    0 0 0 1px var(--kitsune-accent-soft),
+    0 0 16px color-mix(in srgb, var(--r82-magenta) 30%, transparent) !important;
+}
+#urlbar-input {
+  color: var(--r82-fg) !important;
+}
+
+#identity-box[pageproxystate="valid"] {
+  color: var(--r82-fg) !important;
+}
+#tracking-protection-icon-box[hasException],
+#tracking-protection-icon-box[active] {
+  color: var(--r82-cyan) !important;
+}
+
+.toolbarbutton-1:hover,
+.toolbarbutton-icon:hover,
+#bookmarks-menu-button:hover {
+  background: var(--r82-surface) !important;
+  color: var(--r82-fg) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 4. BOOKMARKS BAR / SIDEBAR / FIND BAR / PANELS
+ * -------------------------------------------------------------------------- */
+#PersonalToolbar {
+  background: var(--r82-bg) !important;
+  color: var(--r82-fg) !important;
+}
+#PersonalToolbar .bookmark-item:hover {
+  background: var(--r82-surface) !important;
+}
+
+#sidebar-box {
+  background: var(--r82-deep) !important;
+}
+#sidebar-header {
+  background: var(--r82-deep) !important;
+  color: var(--r82-fg) !important;
+  border-bottom: 1px solid var(--r82-surface) !important;
+}
+
+findbar {
+  background: var(--r82-deep) !important;
+  color: var(--r82-fg) !important;
+  border-top: 1px solid var(--r82-surface) !important;
+}
+.findbar-textbox {
+  background: var(--r82-deep) !important;
+  color: var(--r82-fg) !important;
+  border: 1px solid var(--r82-surface) !important;
+}
+.findbar-textbox[focused="true"] {
+  border-color: var(--r82-magenta) !important;
+}
+
+menupopup,
+panel {
+  --panel-background: var(--r82-deep) !important;
+  --panel-color: var(--r82-fg) !important;
+}
+menupopup menuitem:hover,
+menupopup menu:hover {
+  background: var(--r82-surface) !important;
+  color: var(--r82-fg) !important;
+}
+
+#private-browsing-indicator-with-label {
+  color: var(--r82-pink) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 5. OPTIONAL UI TOGGLES
+ * -------------------------------------------------------------------------- */
+/* #firefox-view-button { display: none !important; } */
+/* #alltabs-button { display: none !important; } */
+/* .tab-close-button { display: none !important; } */
+/* #star-button-box { display: none !important; } */
+/* #pocket-button { display: none !important; } */
+/* :root { --tab-min-height: 30px !important; } */

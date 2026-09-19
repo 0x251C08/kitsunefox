@@ -1,0 +1,229 @@
+/* ==========================================================================
+ * kitsunefox / everforest — userChrome.css
+ * Everforest Dark (medium contrast, sainnhe) for Firefox's interface.
+ * Page filters (palette-agnostic) live in ../userContent.css.
+ *
+ * INSTALL
+ *   1. about:config → toolkit.legacyUserProfileCustomizations.stylesheets = true
+ *   2. about:profiles → open your profile's Root Directory
+ *   3. Create a folder named `chrome` there and drop this file inside it
+ *      (plus ../userContent.css for web-page ad/annoyance filtering)
+ *   4. Restart Firefox
+ *
+ * NOTE
+ *   userChrome.css can ONLY style Firefox's interface (tabs, toolbar,
+ *   menus) — never web pages. CSS also cannot block network requests —
+ *   for real blocking pair this with uBlock Origin in medium/hard mode.
+ * ========================================================================== */
+
+/* --------------------------------------------------------------------------
+ * 1. EVERFOREST DARK PALETTE (medium contrast)
+ * -------------------------------------------------------------------------- */
+:root {
+  --ef-bg-dim: #232a2e;
+  --ef-bg0: #2d353b;
+  --ef-bg1: #343f44;
+  --ef-bg2: #3d484d;
+  --ef-bg3: #475258;
+  --ef-bg4: #4f585e;
+  --ef-fg: #d3c6aa;
+  --ef-red: #e67e80;
+  --ef-orange: #e69875;
+  --ef-yellow: #dbbc7f;
+  --ef-green: #a7c080;
+  --ef-aqua: #83c092;
+  --ef-blue: #7fbbb3;
+  --ef-purple: #d699b6;
+  --ef-grey0: #7a8478;
+  --ef-grey1: #859289;
+  --ef-grey2: #9da9a0;
+
+  --kitsune-accent: var(--ef-green);
+  --kitsune-accent-soft: color-mix(in srgb, var(--ef-green) 22%, transparent);
+
+  /* Map Firefox's built-in theme variables so stock UI follows the theme. */
+  --toolbar-bgcolor: var(--ef-bg0) !important;
+  --toolbar-color: var(--ef-fg) !important;
+  --toolbar-field-background-color: var(--ef-bg-dim) !important;
+  --toolbar-field-color: var(--ef-fg) !important;
+  --toolbar-field-focus-background-color: var(--ef-bg-dim) !important;
+  --toolbar-field-focus-border-color: var(--kitsune-accent) !important;
+  --lwt-accent-color: var(--ef-bg-dim) !important;
+  --lwt-text-color: var(--ef-fg) !important;
+  --lwt-toolbar-field-highlight: var(--kitsune-accent-soft) !important;
+  --lwt-toolbar-field-highlight-text: var(--ef-fg) !important;
+  --tab-selected-bgcolor: var(--ef-bg1) !important;
+  --tab-selected-textcolor: var(--ef-fg) !important;
+  --arrowpanel-background: var(--ef-bg-dim) !important;
+  --arrowpanel-color: var(--ef-fg) !important;
+  --arrowpanel-border-color: var(--ef-bg1) !important;
+  --panel-separator-color: var(--ef-bg1) !important;
+  --button-background-color-hover: var(--ef-bg1) !important;
+}
+
+/* Dark scrollbars across chrome */
+* {
+  scrollbar-color: var(--ef-bg3) var(--ef-bg-dim) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 2. TOOLBOX / TAB BAR
+ * -------------------------------------------------------------------------- */
+#navigator-toolbox {
+  background: var(--ef-bg-dim) !important;
+  border-bottom: 1px solid var(--ef-bg1) !important;
+}
+
+#TabsToolbar {
+  background: var(--ef-bg-dim) !important;
+}
+
+/* Inactive tabs */
+.tabbrowser-tab .tab-background {
+  background: transparent !important;
+  border-radius: 8px !important;
+  margin-block: 3px !important;
+}
+.tabbrowser-tab:hover .tab-background {
+  background: var(--ef-bg1) !important;
+}
+
+/* Active tab — surface fill + accent top edge */
+.tabbrowser-tab[selected="true"] .tab-background {
+  background: var(--ef-bg1) !important;
+  box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important;
+}
+.tabbrowser-tab[selected="true"] .tab-label {
+  color: var(--ef-fg) !important;
+  font-weight: 600 !important;
+}
+.tabbrowser-tab:not([selected="true"]) .tab-label {
+  color: var(--ef-grey0) !important;
+}
+
+/* Kill the default tab separators, tint the close button on hover */
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+  display: none !important;
+}
+.tab-close-button:hover {
+  background: var(--ef-red) !important;
+  color: var(--ef-bg-dim) !important;
+}
+
+/* Audio-playing tab indicator */
+.tab-icon-overlay[indicator-replaces-favicon],
+.tab-icon-sound {
+  color: var(--kitsune-accent) !important;
+}
+
+/* New-tab button + all-tabs button */
+#tabs-newtab-button:hover,
+#alltabs-button:hover {
+  background: var(--ef-bg1) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 3. NAV BAR / URL BAR
+ * -------------------------------------------------------------------------- */
+#nav-bar {
+  background: var(--ef-bg0) !important;
+  box-shadow: none !important;
+}
+
+#urlbar {
+  --urlbar-box-bgcolor: var(--ef-bg1) !important;
+}
+#urlbar-background {
+  background: var(--ef-bg-dim) !important;
+  border: 1px solid var(--ef-bg1) !important;
+  border-radius: 8px !important;
+}
+#urlbar[focused="true"] #urlbar-background {
+  border-color: var(--kitsune-accent) !important;
+  box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important;
+}
+#urlbar-input {
+  color: var(--ef-fg) !important;
+}
+
+/* Identity box + tracking shield: green when protected */
+#identity-box[pageproxystate="valid"] {
+  color: var(--ef-fg) !important;
+}
+#tracking-protection-icon-box[hasException],
+#tracking-protection-icon-box[active] {
+  color: var(--ef-green) !important;
+}
+
+/* Toolbar buttons */
+.toolbarbutton-1:hover,
+.toolbarbutton-icon:hover,
+#bookmarks-menu-button:hover {
+  background: var(--ef-bg1) !important;
+  color: var(--ef-fg) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 4. BOOKMARKS BAR / SIDEBAR / FIND BAR / PANELS
+ * -------------------------------------------------------------------------- */
+#PersonalToolbar {
+  background: var(--ef-bg0) !important;
+  color: var(--ef-fg) !important;
+}
+#PersonalToolbar .bookmark-item:hover {
+  background: var(--ef-bg1) !important;
+}
+
+#sidebar-box {
+  background: var(--ef-bg-dim) !important;
+}
+#sidebar-header {
+  background: var(--ef-bg-dim) !important;
+  color: var(--ef-fg) !important;
+  border-bottom: 1px solid var(--ef-bg1) !important;
+}
+
+findbar {
+  background: var(--ef-bg-dim) !important;
+  color: var(--ef-fg) !important;
+  border-top: 1px solid var(--ef-bg1) !important;
+}
+.findbar-textbox {
+  background: var(--ef-bg-dim) !important;
+  color: var(--ef-fg) !important;
+  border: 1px solid var(--ef-bg1) !important;
+}
+.findbar-textbox[focused="true"] {
+  border-color: var(--kitsune-accent) !important;
+}
+
+/* Menus + arrow panels */
+menupopup,
+panel {
+  --panel-background: var(--ef-bg-dim) !important;
+  --panel-color: var(--ef-fg) !important;
+}
+menupopup menuitem:hover,
+menupopup menu:hover {
+  background: var(--ef-bg1) !important;
+  color: var(--ef-fg) !important;
+}
+
+/* Private-browsing indicator tint */
+#private-browsing-indicator-with-label {
+  color: var(--ef-purple) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 5. OPTIONAL UI TOGGLES — uncomment what you want gone
+ * -------------------------------------------------------------------------- */
+/* Hide Firefox View button          */ /* #firefox-view-button { display: none !important; } */
+/* Hide List-All-Tabs button         */ /* #alltabs-button { display: none !important; } */
+/* Hide tab close buttons (middle-click still closes) */
+/* .tab-close-button { display: none !important; } */
+/* Hide bookmark star in urlbar      */ /* #star-button-box { display: none !important; } */
+/* Hide Pocket-era leftover bits     */ /* #pocket-button { display: none !important; } */
+/* Compact tab height                */ /* :root { --tab-min-height: 30px !important; } */
+
+/* Page ad/annoyance filters live in the companion ../userContent.css file. */

@@ -1,0 +1,205 @@
+/* ==========================================================================
+ * kitsunefox / gruvbox-material — userChrome.css
+ * Gruvbox Material — hardened contrast, warm retro groove.
+ * ========================================================================== */
+:root {
+  --gm-bg: #282828;
+  --gm-deep: #1d2021;
+  --gm-surface: #32302f;
+  --gm-surface1: #3c3836;
+  --gm-fg: #ebdbb2;
+  --gm-muted: #928374;
+  --gm-accent: #d79921;
+  --gm-green: #98971a;
+  --gm-aqua: #689d6a;
+  --gm-red: #cc241d;
+  --gm-purple: #b16286;
+  --gm-blue: #458588;
+  --kitsune-accent: var(--gm-accent);
+  --kitsune-accent-soft: color-mix(in srgb, var(--gm-accent) 18%, transparent);
+  --toolbar-bgcolor: var(--gm-bg) !important;
+  --toolbar-color: var(--gm-fg) !important;
+  --toolbar-field-background-color: var(--gm-deep) !important;
+  --toolbar-field-color: var(--gm-fg) !important;
+  --toolbar-field-focus-background-color: var(--gm-deep) !important;
+  --toolbar-field-focus-border-color: var(--kitsune-accent) !important;
+  --lwt-accent-color: var(--gm-deep) !important;
+  --lwt-text-color: var(--gm-fg) !important;
+  --lwt-toolbar-field-highlight: var(--kitsune-accent-soft) !important;
+  --tab-selected-bgcolor: var(--gm-surface) !important;
+  --arrowpanel-background: var(--gm-deep) !important;
+  --arrowpanel-color: var(--gm-fg) !important;
+  --arrowpanel-border-color: var(--gm-surface) !important;
+  --panel-separator-color: var(--gm-surface) !important;
+  --button-background-color-hover: var(--gm-surface) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 2. TOOLBOX / TAB BAR
+ * -------------------------------------------------------------------------- */
+#navigator-toolbox {
+  background: var(--gm-deep) !important;
+  border-bottom: 1px solid var(--gm-surface) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 2. TOOLBOX / TAB BAR
+ * -------------------------------------------------------------------------- */
+#navigator-toolbox {
+  background: var(--gm-deep) !important;
+  border-bottom: 1px solid var(--gm-surface) !important;
+}
+
+#TabsToolbar {
+  background: var(--gm-deep) !important;
+}
+
+/* Inactive tabs */
+.tabbrowser-tab .tab-background {
+  background: transparent !important;
+  border-radius: 8px !important;
+  margin-block: 3px !important;
+}
+.tabbrowser-tab:hover .tab-background {
+  background: var(--gm-surface) !important;
+}
+
+/* Active tab — surface fill + accent top edge */
+.tabbrowser-tab[selected="true"] .tab-background {
+  background: var(--gm-surface) !important;
+  box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important;
+}
+.tabbrowser-tab[selected="true"] .tab-label {
+  color: var(--gm-fg) !important;
+  font-weight: 600 !important;
+}
+.tabbrowser-tab:not([selected="true"]) .tab-label {
+  color: var(--gm-muted) !important;
+}
+
+/* Kill the default tab separators, tint the close button on hover */
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+  display: none !important;
+}
+.tab-close-button:hover {
+  background: var(--gm-red) !important;
+  color: var(--gm-deep) !important;
+}
+
+/* Audio-playing tab indicator */
+.tab-icon-overlay[indicator-replaces-favicon],
+.tab-icon-sound {
+  color: var(--kitsune-accent) !important;
+}
+
+/* New-tab button + all-tabs button */
+#tabs-newtab-button:hover,
+#alltabs-button:hover {
+  background: var(--gm-surface) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 3. NAV BAR / URL BAR
+ * -------------------------------------------------------------------------- */
+#nav-bar {
+  background: var(--gm-bg) !important;
+  box-shadow: none !important;
+}
+
+#urlbar {
+  --urlbar-box-bgcolor: var(--gm-surface) !important;
+}
+#urlbar-background {
+  background: var(--gm-deep) !important;
+  border: 1px solid var(--gm-surface) !important;
+  border-radius: 8px !important;
+}
+#urlbar[focused="true"] #urlbar-background {
+  border-color: var(--kitsune-accent) !important;
+  box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important;
+}
+#urlbar-input {
+  color: var(--gm-fg) !important;
+}
+
+/* Identity box + tracking shield: green when protected */
+#identity-box[pageproxystate="valid"] {
+  color: var(--gm-fg) !important;
+}
+#tracking-protection-icon-box[hasException],
+#tracking-protection-icon-box[active] {
+  color: var(--gm-green) !important;
+}
+
+/* Toolbar buttons */
+.toolbarbutton-1:hover,
+.toolbarbutton-icon:hover,
+#bookmarks-menu-button:hover {
+  background: var(--gm-surface) !important;
+  color: var(--gm-fg) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 4. BOOKMARKS BAR / SIDEBAR / FIND BAR / PANELS
+ * -------------------------------------------------------------------------- */
+#PersonalToolbar {
+  background: var(--gm-bg) !important;
+  color: var(--gm-fg) !important;
+}
+#PersonalToolbar .bookmark-item:hover {
+  background: var(--gm-surface) !important;
+}
+
+#sidebar-box {
+  background: var(--gm-deep) !important;
+}
+#sidebar-header {
+  background: var(--gm-deep) !important;
+  color: var(--gm-fg) !important;
+  border-bottom: 1px solid var(--gm-surface) !important;
+}
+
+findbar {
+  background: var(--gm-deep) !important;
+  color: var(--gm-fg) !important;
+  border-top: 1px solid var(--gm-surface) !important;
+}
+.findbar-textbox {
+  background: var(--gm-deep) !important;
+  color: var(--gm-fg) !important;
+  border: 1px solid var(--gm-surface) !important;
+}
+.findbar-textbox[focused="true"] {
+  border-color: var(--kitsune-accent) !important;
+}
+
+/* Menus + arrow panels */
+menupopup,
+panel {
+  --panel-background: var(--gm-deep) !important;
+  --panel-color: var(--gm-fg) !important;
+}
+menupopup menuitem:hover,
+menupopup menu:hover {
+  background: var(--gm-surface) !important;
+  color: var(--gm-fg) !important;
+}
+
+/* Private-browsing indicator tint */
+#private-browsing-indicator-with-label {
+  color: var(--gm-purple) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 5. OPTIONAL UI TOGGLES — uncomment what you want gone
+ * -------------------------------------------------------------------------- */
+/* Hide Firefox View button          */ /* #firefox-view-button { display: none !important; } */
+/* Hide List-All-Tabs button         */ /* #alltabs-button { display: none !important; } */
+/* Hide tab close buttons (middle-click still closes) */
+/* .tab-close-button { display: none !important; } */
+/* Hide bookmark star in urlbar      */ /* #star-button-box { display: none !important; } */
+/* Hide Pocket-era leftover bits     */ /* #pocket-button { display: none !important; } */
+/* Compact tab height                */ /* :root { --tab-min-height: 30px !important; } */
+
+/* Page ad/annoyance filters live in the companion ../userContent.css file. */

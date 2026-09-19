@@ -1,0 +1,293 @@
+/* ==========================================================================
+ * kitsunefox / #ff9cae — userChrome.css
+ * Soft pink/rose theme centered on #ff9cae with complementary sage,
+ * cream, and deep charcoal. Gentle, warm, readable.
+ * ========================================================================== */
+
+/* --------------------------------------------------------------------------
+ * 1. #FF9CAE PALETTE (composed complementary palette)
+ * -------------------------------------------------------------------------- */
+:root {
+  --rosa-bg: #fdf6f8;
+  --rosa-deep: #fceef1;
+  --rosa-surface: #fff0f3;
+  --rosa-surface1: #ffe4e9;
+  --rosa-fg: #2d1f23;
+  --rosa-muted: #8a6d74;
+  --rosa-rose: #ff9cae; /* primary accent */
+  --rosa-rose-dim: #e8899b;
+  --rosa-sage: #8fb88f; /* complementary green */
+  --rosa-sage-dim: #7aa37a;
+  --rosa-cream: #fff8f0;
+  --rosa-charcoal: #1a1618;
+  --rosa-peach: #ffc8a8;
+  --rosa-lavender: #c9b3e8;
+
+  --kitsune-accent: var(--rosa-rose);
+  --kitsune-accent-soft: color-mix(in srgb, var(--rosa-rose) 18%, transparent);
+  --kitsune-accent-glow: color-mix(in srgb, var(--rosa-rose) 35%, transparent);
+
+  --toolbar-bgcolor: var(--rosa-bg) !important;
+  --toolbar-color: var(--rosa-fg) !important;
+  --toolbar-field-background-color: var(--rosa-surface) !important;
+  --toolbar-field-color: var(--rosa-fg) !important;
+  --toolbar-field-focus-background-color: var(--rosa-surface) !important;
+  --toolbar-field-focus-border-color: var(--kitsune-accent) !important;
+  --lwt-accent-color: var(--rosa-deep) !important;
+  --lwt-text-color: var(--rosa-fg) !important;
+  --lwt-toolbar-field-highlight: var(--kitsune-accent-soft) !important;
+  --lwt-toolbar-field-highlight-text: var(--rosa-fg) !important;
+  --tab-selected-bgcolor: var(--rosa-surface) !important;
+  --tab-selected-textcolor: var(--rosa-fg) !important;
+  --arrowpanel-background: var(--rosa-bg) !important;
+  --arrowpanel-color: var(--rosa-fg) !important;
+  --arrowpanel-border-color: var(--rosa-surface1) !important;
+  --panel-separator-color: var(--rosa-surface1) !important;
+  --button-background-color-hover: var(--rosa-surface1) !important;
+}
+
+/* Light scrollbars */
+* {
+  scrollbar-color: var(--rosa-surface1) var(--rosa-bg) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 2. TOOLBOX / TAB BAR
+ * -------------------------------------------------------------------------- */
+#navigator-toolbox {
+  background: var(--rosa-bg) !important;
+  border-bottom: 1px solid var(--rosa-surface1) !important;
+}
+
+#TabsToolbar {
+  background: var(--rosa-bg) !important;
+}
+
+.tabbrowser-tab .tab-background {
+  background: transparent !important;
+  border-radius: 10px !important;
+  margin-block: 4px !important;
+  margin-inline: 2px !important;
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease !important;
+}
+.tabbrowser-tab:hover .tab-background {
+  background: var(--rosa-surface1) !important;
+}
+
+.tabbrowser-tab[selected="true"] .tab-background {
+  background: var(--rosa-surface) !important;
+  box-shadow:
+    inset 0 2px 0 0 var(--rosa-rose),
+    0 2px 8px color-mix(in srgb, var(--rosa-rose) 20%, transparent) !important;
+}
+.tabbrowser-tab[selected="true"] .tab-label {
+  color: var(--rosa-fg) !important;
+  font-weight: 600 !important;
+}
+.tabbrowser-tab:not([selected="true"]) .tab-label {
+  color: var(--rosa-muted) !important;
+}
+
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+  display: none !important;
+}
+.tab-close-button {
+  border-radius: 50% !important;
+  margin-inline-end: 6px !important;
+}
+.tab-close-button:hover {
+  background: var(--rosa-rose) !important;
+  color: var(--rosa-bg) !important;
+}
+
+.tab-icon-overlay[indicator-replaces-favicon],
+.tab-icon-sound {
+  color: var(--rosa-sage) !important;
+}
+
+#tabs-newtab-button:hover,
+#alltabs-button:hover {
+  background: var(--rosa-surface1) !important;
+  border-radius: 8px !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 3. NAV BAR / URL BAR
+ * -------------------------------------------------------------------------- */
+#nav-bar {
+  background: var(--rosa-bg) !important;
+  box-shadow: none !important;
+  padding: 4px 8px !important;
+}
+
+#urlbar {
+  --urlbar-box-bgcolor: var(--rosa-surface) !important;
+}
+#urlbar-background {
+  background: var(--rosa-surface) !important;
+  border: 1px solid var(--rosa-surface1) !important;
+  border-radius: 12px !important;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s !important;
+}
+#urlbar[focused="true"] #urlbar-background {
+  border-color: var(--rosa-rose) !important;
+  box-shadow:
+    0 0 0 2px var(--kitsune-accent-soft),
+    0 4px 16px color-mix(in srgb, var(--rosa-rose) 15%, transparent) !important;
+}
+#urlbar-input {
+  color: var(--rosa-fg) !important;
+}
+
+#identity-box[pageproxystate="valid"] {
+  color: var(--rosa-sage) !important;
+}
+#tracking-protection-icon-box[hasException],
+#tracking-protection-icon-box[active] {
+  color: var(--rosa-sage) !important;
+}
+
+.toolbarbutton-1:hover,
+.toolbarbutton-icon:hover,
+#bookmarks-menu-button:hover {
+  background: var(--rosa-surface1) !important;
+  color: var(--rosa-fg) !important;
+  border-radius: 8px !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 4. BOOKMARKS BAR / SIDEBAR / FIND BAR / PANELS
+ * -------------------------------------------------------------------------- */
+#PersonalToolbar {
+  background: var(--rosa-deep) !important;
+  color: var(--rosa-fg) !important;
+  border-top: 1px solid var(--rosa-surface1) !important;
+  border-bottom: 1px solid var(--rosa-surface1) !important;
+}
+#PersonalToolbar .bookmark-item:hover {
+  background: var(--rosa-surface1) !important;
+  color: var(--rosa-rose) !important;
+  border-radius: 6px !important;
+}
+
+#sidebar-box {
+  background: var(--rosa-bg) !important;
+  border-right: 1px solid var(--rosa-surface1) !important;
+}
+#sidebar-header {
+  background: var(--rosa-deep) !important;
+  color: var(--rosa-fg) !important;
+  border-bottom: 1px solid var(--rosa-surface1) !important;
+}
+
+findbar {
+  background: var(--rosa-deep) !important;
+  color: var(--rosa-fg) !important;
+  border-top: 1px solid var(--rosa-surface1) !important;
+}
+.findbar-textbox {
+  background: var(--rosa-surface) !important;
+  color: var(--rosa-fg) !important;
+  border: 1px solid var(--rosa-surface1) !important;
+  border-radius: 8px !important;
+}
+.findbar-textbox[focused="true"] {
+  border-color: var(--rosa-rose) !important;
+  box-shadow: 0 0 0 2px var(--kitsune-accent-soft) !important;
+}
+
+menupopup,
+panel {
+  --panel-background: var(--rosa-bg) !important;
+  --panel-color: var(--rosa-fg) !important;
+  --panel-border-color: var(--rosa-surface1) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 24px
+    color-mix(in srgb, var(--rosa-charcoal) 12%, transparent) !important;
+}
+menupopup menuitem:hover,
+menupopup menu:hover {
+  background: var(--rosa-surface1) !important;
+  color: var(--rosa-fg) !important;
+}
+
+#private-browsing-indicator-with-label {
+  color: var(--rosa-lavender) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 5. COMPLEMENTARY ACCENT VARIANTS (for user preference)
+ * -------------------------------------------------------------------------- */
+/* Sage accent mode */
+:root[accent="sage"] {
+  --kitsune-accent: var(--rosa-sage);
+  --kitsune-accent-soft: color-mix(in srgb, var(--rosa-sage) 18%, transparent);
+  --kitsune-accent-glow: color-mix(in srgb, var(--rosa-sage) 35%, transparent);
+}
+
+/* Peach accent mode */
+:root[accent="peach"] {
+  --kitsune-accent: var(--rosa-peach);
+  --kitsune-accent-soft: color-mix(in srgb, var(--rosa-peach) 18%, transparent);
+  --kitsune-accent-glow: color-mix(in srgb, var(--rosa-peach) 35%, transparent);
+}
+
+/* Lavender accent mode */
+:root[accent="lavender"] {
+  --kitsune-accent: var(--rosa-lavender);
+  --kitsune-accent-soft: color-mix(
+    in srgb,
+    var(--rosa-lavender) 18%,
+    transparent
+  );
+  --kitsune-accent-glow: color-mix(
+    in srgb,
+    var(--rosa-lavender) 35%,
+    transparent
+  );
+}
+
+/* --------------------------------------------------------------------------
+ * 6. OPTIONAL UI TOGGLES
+ * -------------------------------------------------------------------------- */
+/* #firefox-view-button { display: none !important; } */
+/* #alltabs-button { display: none !important; } */
+/* .tab-close-button { display: none !important; } */
+/* #star-button-box { display: none !important; } */
+/* #pocket-button { display: none !important; } */
+/* :root { --tab-min-height: 32px !important; } */
+
+/* --------------------------------------------------------------------------
+ * 7. DARK MODE VARIANT (optional - uncomment to enable)
+ * -------------------------------------------------------------------------- */
+/*
+@media (prefers-color-scheme: dark) {
+  :root {
+    --rosa-bg:       #1a1618;
+    --rosa-deep:     #141113;
+    --rosa-surface:  #231c20;
+    --rosa-surface1: #2d2227;
+    --rosa-fg:       #f5e6e9;
+    --rosa-muted:    #9a7d85;
+    --rosa-rose:     #ff9cae;
+    --rosa-rose-dim: #cc7d8e;
+    --rosa-sage:     #8fb88f;
+    --rosa-cream:    #2d2227;
+    --rosa-charcoal: #f5e6e9;
+    --rosa-peach:    #ffb388;
+    --rosa-lavender: #b8a0d8;
+  }
+}
+*/
+
+/* ==========================================================================
+ * ACCENT SWITCHING
+ * ==========================================================================
+ * To change accent color, add to user.js or userChrome.css before @namespace:
+ *   :root { accent: sage; }    /* or 'peach', 'lavender' *
+ * ========================================================================== */

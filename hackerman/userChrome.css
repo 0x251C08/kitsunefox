@@ -1,0 +1,442 @@
+/* ==========================================================================
+ * kitsunefox / hackerman — userChrome.css
+ * Classic green-on-black hacker terminal: matrix rain, phosphor glow,
+ * blinking cursor, 80-column mastery. "I'm in."
+ * ========================================================================== */
+
+/* --------------------------------------------------------------------------
+ * 1. HACKERMAN PALETTE (Terminal phosphor green composed palette)
+ * -------------------------------------------------------------------------- */
+:root {
+  --hk-bg: #000000;
+  --hk-deep: #000000;
+  --hk-surface: #001100;
+  --hk-surface1: #001a00;
+  --hk-fg: #00ff00;
+  --hk-fg-dim: #00cc00;
+  --hk-muted: #006600;
+  --hk-dim: #003300;
+  --hk-bright: #00ff00;
+  --hk-amber: #ccaa00;
+  --hk-red: #ff0000;
+  --hk-white: #ffffff;
+  --hk-cursor: #00ff00;
+
+  --kitsune-accent: var(--hk-bright);
+  --kitsune-accent-soft: color-mix(in srgb, var(--hk-bright) 12%, transparent);
+  --kitsune-accent-glow: color-mix(in srgb, var(--hk-bright) 40%, transparent);
+
+  --toolbar-bgcolor: var(--hk-bg) !important;
+  --toolbar-color: var(--hk-fg) !important;
+  --toolbar-field-background-color: var(--hk-bg) !important;
+  --toolbar-field-color: var(--hk-fg) !important;
+  --toolbar-field-focus-background-color: var(--hk-bg) !important;
+  --toolbar-field-focus-border-color: var(--kitsune-accent) !important;
+  --lwt-accent-color: var(--hk-bg) !important;
+  --lwt-text-color: var(--hk-fg) !important;
+  --lwt-toolbar-field-highlight: var(--kitsune-accent-soft) !important;
+  --lwt-toolbar-field-highlight-text: var(--hk-fg) !important;
+  --tab-selected-bgcolor: var(--hk-surface) !important;
+  --tab-selected-textcolor: var(--hk-fg) !important;
+  --arrowpanel-background: var(--hk-bg) !important;
+  --arrowpanel-color: var(--hk-fg) !important;
+  --arrowpanel-border-color: var(--hk-dim) !important;
+  --panel-separator-color: var(--hk-dim) !important;
+  --button-background-color-hover: var(--hk-surface) !important;
+}
+
+/* Hacker font stack - terminal monospace */
+:root {
+  --hk-font:
+    "VT323", "IBM Plex Mono", "JetBrains Mono", "Fira Mono", "Source Code Pro",
+    "Consolas", "Monospace";
+  --hk-font-ui:
+    "Share Tech Mono", "IBM Plex Mono", "JetBrains Mono", "Monospace";
+}
+
+/* Scrollbars - hacker style */
+* {
+  scrollbar-color: var(--hk-dim) var(--hk-bg) !important;
+  scrollbar-width: thin !important;
+}
+
+/* CRT phosphor glow for focused elements */
+@keyframes hk-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes hk-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * 2. TOOLBOX / TAB BAR
+ * -------------------------------------------------------------------------- */
+#navigator-toolbox {
+  background: var(--hk-bg) !important;
+  border-bottom: 1px solid var(--hk-dim) !important;
+  font-family: var(--hk-font-ui) !important;
+}
+
+#TabsToolbar {
+  background: var(--hk-bg) !important;
+}
+
+.tabbrowser-tab .tab-background {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 0 !important;
+  margin-block: 0 !important;
+  transition: background 0.1s !important;
+}
+.tabbrowser-tab:hover .tab-background {
+  background: var(--hk-surface) !important;
+}
+
+.tabbrowser-tab[selected="true"] .tab-background {
+  background: var(--hk-surface) !important;
+  border-bottom: 1px solid var(--hk-bright) !important;
+  box-shadow:
+    inset 0 -1px 0 0 var(--hk-bright),
+    0 0 8px var(--kitsune-accent-glow) !important;
+}
+.tabbrowser-tab[selected="true"] .tab-label {
+  color: var(--hk-bright) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 6px var(--kitsune-accent-glow) !important;
+}
+.tabbrowser-tab:not([selected="true"]) .tab-label {
+  color: var(--hk-muted) !important;
+}
+
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+  display: none !important;
+}
+.tab-close-button {
+  color: var(--hk-dim) !important;
+  font-family: var(--hk-font) !important;
+}
+.tab-close-button:hover {
+  background: var(--hk-red) !important;
+  color: var(--hk-bg) !important;
+  animation: none !important;
+}
+
+.tab-icon-overlay[indicator-replaces-favicon],
+.tab-icon-sound {
+  color: var(--hk-bright) !important;
+}
+
+#tabs-newtab-button,
+#alltabs-button {
+  color: var(--hk-dim) !important;
+}
+#tabs-newtab-button:hover,
+#alltabs-button:hover {
+  background: var(--hk-surface) !important;
+  color: var(--hk-bright) !important;
+}
+
+/* Tab labels - terminal style */
+.tab-label {
+  font-family: var(--hk-font) !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Tab favicon - monochrome */
+.tabbrowser-tab .tab-icon-image {
+  filter: grayscale(100%) contrast(200%) sepia(100%) hue-rotate(80deg)
+    saturate(100%) !important;
+}
+.tabbrowser-tab[selected="true"] .tab-icon-image {
+  filter: grayscale(100%) contrast(200%) sepia(100%) hue-rotate(80deg)
+    saturate(200%) drop-shadow(0 0 4px var(--hk-bright)) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 3. NAV BAR / URL BAR
+ * -------------------------------------------------------------------------- */
+#nav-bar {
+  background: var(--hk-bg) !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid var(--hk-dim) !important;
+  padding: 2px 4px !important;
+}
+
+#urlbar {
+  --urlbar-box-bgcolor: var(--hk-surface) !important;
+  font-family: var(--hk-font) !important;
+}
+#urlbar-background {
+  background: var(--hk-bg) !important;
+  border: 1px solid var(--hk-dim) !important;
+  border-radius: 0 !important;
+  transition:
+    border-color 0.1s,
+    box-shadow 0.1s !important;
+}
+#urlbar[focused="true"] #urlbar-background {
+  border-color: var(--hk-bright) !important;
+  box-shadow:
+    0 0 0 1px var(--kitsune-accent-soft),
+    0 0 12px var(--kitsune-accent-glow) !important;
+}
+#urlbar-input {
+  color: var(--hk-fg) !important;
+  font-family: var(--hk-font) !important;
+  font-size: 13px !important;
+  caret-color: var(--hk-cursor) !important;
+}
+#urlbar[focused="true"] #urlbar-input {
+  color: var(--hk-bright) !important;
+}
+
+/* Blinking cursor effect for focused urlbar */
+#urlbar[focused="true"] #urlbar-input::placeholder {
+  color: var(--hk-dim) !important;
+}
+
+/* Identity box - lock icon */
+#identity-box {
+  color: var(--hk-dim) !important;
+}
+#identity-box[pageproxystate="valid"] {
+  color: var(--hk-bright) !important;
+}
+
+/* Tracking protection */
+#tracking-protection-icon-box[hasException],
+#tracking-protection-icon-box[active] {
+  color: var(--hk-bright) !important;
+}
+
+/* Toolbar buttons */
+.toolbarbutton-1,
+.toolbarbutton-icon,
+#bookmarks-menu-button {
+  color: var(--hk-dim) !important;
+}
+.toolbarbutton-1:hover,
+.toolbarbutton-icon:hover,
+#bookmarks-menu-button:hover {
+  background: var(--hk-surface) !important;
+  color: var(--hk-bright) !important;
+}
+
+/* Extension buttons */
+#unified-extensions-button,
+#unified-extensions-area .toolbarbutton-1 {
+  color: var(--hk-dim) !important;
+}
+#unified-extensions-button:hover,
+#unified-extensions-area .toolbarbutton-1:hover {
+  color: var(--hk-bright) !important;
+  background: var(--hk-surface) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 4. BOOKMARKS BAR / SIDEBAR / FIND BAR / PANELS
+ * -------------------------------------------------------------------------- */
+#PersonalToolbar {
+  background: var(--hk-bg) !important;
+  color: var(--hk-fg) !important;
+  border-top: 1px solid var(--hk-dim) !important;
+  border-bottom: 1px solid var(--hk-dim) !important;
+  font-family: var(--hk-font-ui) !important;
+  font-size: 11px !important;
+}
+#PersonalToolbar .bookmark-item {
+  color: var(--hk-dim) !important;
+  border-radius: 0 !important;
+  margin: 0 1px !important;
+  padding: 2px 6px !important;
+}
+#PersonalToolbar .bookmark-item:hover {
+  background: var(--hk-surface) !important;
+  color: var(--hk-bright) !important;
+}
+#PersonalToolbar .bookmark-item > .toolbarbutton-text {
+  text-transform: uppercase !important;
+  font-family: var(--hk-font) !important;
+}
+
+#sidebar-box {
+  background: var(--hk-bg) !important;
+  border-right: 1px solid var(--hk-dim) !important;
+}
+#sidebar-header {
+  background: var(--hk-bg) !important;
+  color: var(--hk-bright) !important;
+  border-bottom: 1px solid var(--hk-bright) !important;
+  font-family: var(--hk-font-ui) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+}
+
+findbar {
+  background: var(--hk-bg) !important;
+  color: var(--hk-fg) !important;
+  border-top: 1px solid var(--hk-dim) !important;
+  font-family: var(--hk-font) !important;
+}
+.findbar-textbox {
+  background: var(--hk-bg) !important;
+  color: var(--hk-fg) !important;
+  border: 1px solid var(--hk-dim) !important;
+  border-radius: 0 !important;
+}
+.findbar-textbox[focused="true"] {
+  border-color: var(--hk-bright) !important;
+  box-shadow: 0 0 8px var(--kitsune-accent-glow) !important;
+}
+
+menupopup,
+panel {
+  --panel-background: var(--hk-bg) !important;
+  --panel-color: var(--hk-fg) !important;
+  --panel-border-color: var(--hk-dim) !important;
+  font-family: var(--hk-font) !important;
+  border: 1px solid var(--hk-dim) !important;
+}
+menupopup menuitem,
+menupopup menu {
+  padding: 4px 16px !important;
+}
+menupopup menuitem:hover,
+menupopup menu:hover {
+  background: var(--hk-surface) !important;
+  color: var(--hk-bright) !important;
+}
+menupopup menuseparator {
+  border-top: 1px solid var(--hk-dim) !important;
+  margin: 4px 8px !important;
+}
+
+#private-browsing-indicator-with-label {
+  color: var(--hk-amber) !important;
+  font-family: var(--hk-font) !important;
+  text-transform: uppercase !important;
+  animation: hk-blink 1.5s step-end infinite !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 5. DEVTOOLS / INSPECTOR - keep readable
+ * -------------------------------------------------------------------------- */
+.devtools-toolbox {
+  --theme-body-background: var(--hk-bg) !important;
+  --theme-body-color: var(--hk-fg) !important;
+  --theme-sidebar-background: var(--hk-surface) !important;
+  --theme-selection-background: var(--hk-dim) !important;
+  --theme-selection-color: var(--hk-bright) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 6. MATRIX RAIN BACKGROUND (optional - uncomment to enable)
+ * -------------------------------------------------------------------------- */
+/*
+#browser {
+  position: relative;
+}
+#browser::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, var(--hk-bright), transparent),
+    radial-gradient(2px 2px at 40px 70px, var(--hk-fg-dim), transparent),
+    radial-gradient(1px 1px at 90px 40px, var(--hk-muted), transparent),
+    radial-gradient(1px 1px at 130px 80px, var(--hk-dim), transparent),
+    radial-gradient(2px 2px at 160px 30px, var(--hk-bright), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  opacity: 0.03;
+  animation: hk-matrix-drop 20s linear infinite;
+}
+@keyframes hk-matrix-drop {
+  0% { transform: translateY(-100px); }
+  100% { transform: translateY(100vh); }
+}
+*/
+
+/* --------------------------------------------------------------------------
+ * 7. SCANLINES (subtle CRT effect)
+ * -------------------------------------------------------------------------- */
+#browser::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 2147483647;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  opacity: 0.4;
+}
+
+/* --------------------------------------------------------------------------
+ * 8. OPTIONAL UI TOGGLES
+ * -------------------------------------------------------------------------- */
+/* #firefox-view-button { display: none !important; } */
+/* #alltabs-button { display: none !important; } */
+/* .tab-close-button { display: none !important; } */
+/* #star-button-box { display: none !important; } */
+/* #pocket-button { display: none !important; } */
+/* :root { --tab-min-height: 24px !important; } */
+
+/* --------------------------------------------------------------------------
+ * 9. HACKERMAN EASTER EGGS
+ * -------------------------------------------------------------------------- */
+/* Console greeting in browser console - add to user.js:
+ * user_pref("devtools.console.stdout.content", true);
+ * Then open Browser Console (Ctrl+Shift+J) to see:
+ */
+
+/* 
+   ██╗  ██╗███████╗██╗     ██╗      █████╗ ██████╗ ███████╗
+   ██║  ██║██╔════╝██║     ██║     ██╔══██╗██╔══██╗██╔════╝
+   ███████║█████╗  ██║     ██║     ███████║██████╔╝█████╗  
+   ██╔══██║██╔══╝  ██║     ██║     ██╔══██║██╔══██╗██╔══╝  
+   ██║  ██║███████╗███████╗███████╗██║  ██║██║  ██║███████╗
+   ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
+   
+   ACCESS GRANTED. WELCOME BACK, HACKERMAN.
+   REMEMBER: sudo rm -rf / --no-preserve-root
+   (don't actually run that)
+*/
+
+/* ==========================================================================
+ * INSTALLATION
+ * ==========================================================================
+ * 1. about:config → toolkit.legacyUserProfileCustomizations.stylesheets = true
+ * 2. about:profiles → Open Root Directory → create `chrome/` folder
+ * 3. Drop this file + userContent.css in chrome/
+ * 4. Restart Firefox
+ * 
+ * For VT323 font: @import url('https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap');
+ * Add to top of this file or use @font-face with local fonts.
+ * ========================================================================== */

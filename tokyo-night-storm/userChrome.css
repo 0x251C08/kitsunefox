@@ -1,0 +1,207 @@
+/* ==========================================================================
+ * kitsunefox / tokyo-night-storm — userChrome.css
+ * Tokyo Night Storm variant — deeper than Tokyo Night, storm blue.
+ * ========================================================================== */
+:root {
+  --tns-bg: #24283b;
+  --tns-deep: #1a1b26;
+  --tns-surface: #2a3048;
+  --tns-surface1: #343a52;
+  --tns-fg: #c0caf5;
+  --tns-muted: #565f89;
+  --tns-accent: #7aa2f7;
+  --tns-cyan: #7dcfff;
+  --tns-green: #9ece6a;
+  --tns-yellow: #e0af68;
+  --tns-red: #f7768e;
+  --tns-purple: #bb9af7;
+  --tns-blue: var(--tns-accent);
+  --kitsune-accent: var(--tns-accent);
+  --tns-blue: var(--tns-accent);
+  --kitsune-accent-soft: color-mix(in srgb, var(--tns-accent) 18%, transparent);
+  --toolbar-bgcolor: var(--tns-bg) !important;
+  --toolbar-color: var(--tns-fg) !important;
+  --toolbar-field-background-color: var(--tns-deep) !important;
+  --toolbar-field-color: var(--tns-fg) !important;
+  --toolbar-field-focus-background-color: var(--tns-deep) !important;
+  --toolbar-field-focus-border-color: var(--kitsune-accent) !important;
+  --lwt-accent-color: var(--tns-deep) !important;
+  --lwt-text-color: var(--tns-fg) !important;
+  --lwt-toolbar-field-highlight: var(--kitsune-accent-soft) !important;
+  --tab-selected-bgcolor: var(--tns-surface) !important;
+  --arrowpanel-background: var(--tns-deep) !important;
+  --arrowpanel-color: var(--tns-fg) !important;
+  --arrowpanel-border-color: var(--tns-surface) !important;
+  --panel-separator-color: var(--tns-surface) !important;
+  --button-background-color-hover: var(--tns-surface) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 2. TOOLBOX / TAB BAR
+ * -------------------------------------------------------------------------- */
+#navigator-toolbox {
+  background: var(--tns-deep) !important;
+  border-bottom: 1px solid var(--tns-surface) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 2. TOOLBOX / TAB BAR
+ * -------------------------------------------------------------------------- */
+#navigator-toolbox {
+  background: var(--tns-deep) !important;
+  border-bottom: 1px solid var(--tns-surface) !important;
+}
+
+#TabsToolbar {
+  background: var(--tns-deep) !important;
+}
+
+/* Inactive tabs */
+.tabbrowser-tab .tab-background {
+  background: transparent !important;
+  border-radius: 8px !important;
+  margin-block: 3px !important;
+}
+.tabbrowser-tab:hover .tab-background {
+  background: var(--tns-surface) !important;
+}
+
+/* Active tab — surface fill + accent top edge */
+.tabbrowser-tab[selected="true"] .tab-background {
+  background: var(--tns-surface) !important;
+  box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important;
+}
+.tabbrowser-tab[selected="true"] .tab-label {
+  color: var(--tns-fg) !important;
+  font-weight: 600 !important;
+}
+.tabbrowser-tab:not([selected="true"]) .tab-label {
+  color: var(--tns-muted) !important;
+}
+
+/* Kill the default tab separators, tint the close button on hover */
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+  display: none !important;
+}
+.tab-close-button:hover {
+  background: var(--tns-red) !important;
+  color: var(--tns-deep) !important;
+}
+
+/* Audio-playing tab indicator */
+.tab-icon-overlay[indicator-replaces-favicon],
+.tab-icon-sound {
+  color: var(--kitsune-accent) !important;
+}
+
+/* New-tab button + all-tabs button */
+#tabs-newtab-button:hover,
+#alltabs-button:hover {
+  background: var(--tns-surface) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 3. NAV BAR / URL BAR
+ * -------------------------------------------------------------------------- */
+#nav-bar {
+  background: var(--tns-bg) !important;
+  box-shadow: none !important;
+}
+
+#urlbar {
+  --urlbar-box-bgcolor: var(--tns-surface) !important;
+}
+#urlbar-background {
+  background: var(--tns-deep) !important;
+  border: 1px solid var(--tns-surface) !important;
+  border-radius: 8px !important;
+}
+#urlbar[focused="true"] #urlbar-background {
+  border-color: var(--kitsune-accent) !important;
+  box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important;
+}
+#urlbar-input {
+  color: var(--tns-fg) !important;
+}
+
+/* Identity box + tracking shield: green when protected */
+#identity-box[pageproxystate="valid"] {
+  color: var(--tns-fg) !important;
+}
+#tracking-protection-icon-box[hasException],
+#tracking-protection-icon-box[active] {
+  color: var(--tns-green) !important;
+}
+
+/* Toolbar buttons */
+.toolbarbutton-1:hover,
+.toolbarbutton-icon:hover,
+#bookmarks-menu-button:hover {
+  background: var(--tns-surface) !important;
+  color: var(--tns-fg) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 4. BOOKMARKS BAR / SIDEBAR / FIND BAR / PANELS
+ * -------------------------------------------------------------------------- */
+#PersonalToolbar {
+  background: var(--tns-bg) !important;
+  color: var(--tns-fg) !important;
+}
+#PersonalToolbar .bookmark-item:hover {
+  background: var(--tns-surface) !important;
+}
+
+#sidebar-box {
+  background: var(--tns-deep) !important;
+}
+#sidebar-header {
+  background: var(--tns-deep) !important;
+  color: var(--tns-fg) !important;
+  border-bottom: 1px solid var(--tns-surface) !important;
+}
+
+findbar {
+  background: var(--tns-deep) !important;
+  color: var(--tns-fg) !important;
+  border-top: 1px solid var(--tns-surface) !important;
+}
+.findbar-textbox {
+  background: var(--tns-deep) !important;
+  color: var(--tns-fg) !important;
+  border: 1px solid var(--tns-surface) !important;
+}
+.findbar-textbox[focused="true"] {
+  border-color: var(--kitsune-accent) !important;
+}
+
+/* Menus + arrow panels */
+menupopup,
+panel {
+  --panel-background: var(--tns-deep) !important;
+  --panel-color: var(--tns-fg) !important;
+}
+menupopup menuitem:hover,
+menupopup menu:hover {
+  background: var(--tns-surface) !important;
+  color: var(--tns-fg) !important;
+}
+
+/* Private-browsing indicator tint */
+#private-browsing-indicator-with-label {
+  color: var(--tns-purple) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 5. OPTIONAL UI TOGGLES — uncomment what you want gone
+ * -------------------------------------------------------------------------- */
+/* Hide Firefox View button          */ /* #firefox-view-button { display: none !important; } */
+/* Hide List-All-Tabs button         */ /* #alltabs-button { display: none !important; } */
+/* Hide tab close buttons (middle-click still closes) */
+/* .tab-close-button { display: none !important; } */
+/* Hide bookmark star in urlbar      */ /* #star-button-box { display: none !important; } */
+/* Hide Pocket-era leftover bits     */ /* #pocket-button { display: none !important; } */
+/* Compact tab height                */ /* :root { --tab-min-height: 30px !important; } */
+
+/* Page ad/annoyance filters live in the companion ../userContent.css file. */
