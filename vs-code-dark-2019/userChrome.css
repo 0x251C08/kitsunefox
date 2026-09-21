@@ -1,0 +1,46 @@
+/* ==========================================================================
+ * kitsunefox / vs-code-dark-2019 — userChrome.css
+ * VS Code Dark 2019: darker variant with subtle magenta. "Retro dark."
+ * ========================================================================== */
+
+:root {
+  --vcd2-bg:         #1e1e2f;
+  --vcd2-deep:       #161622;
+  --vcd2-surface:    #222432;
+  --vcd2-surface1:   #2d2d40;
+  --vcd2-fg:         #c5c5c9;
+  --vcd2-muted:      #77778a;
+  --vcd2-magenta:    #bd93f9;
+  --vcd2-cyan:       #4ec9b0;
+  --vcd2-yellow:     #e4c66b;
+  --vcd2-orange:     #ff7b72;
+}
+
+:root { --kitsune-accent: var(--vcd2-magenta); }
+
+* { scrollbar-color: var(--vcd2-surface1) var(--vcd2-deep) !important; }
+
+#navigator-toolbox { background: var(--vcd2-deep) !important; border-bottom: 1px solid var(--vcd2-surface) !important; }
+#TabsToolbar { background: var(--vcd2-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--vcd2-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--vcd2-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--vcd2-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--vcd2-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--vcd2-yellow) !important; color: var(--vcd2-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--vcd2-cyan) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--vcd2-surface) !important; }
+
+#nav-bar { background: var(--vcd2-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--vcd2-surface) !important; }
+#urlbar-background { background: var(--vcd2-deep) !important; border: 1px solid var(--vcd2-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--vcd2-fg) !important; }
+
+#PersonalToolbar { background: var(--vcd2-bg) !important; color: var(--vcd2-fg) !important; }
+#sidebar-box { background: var(--vcd2-deep) !important; }
+#sidebar-header { background: var(--vcd2-deep) !important; color: var(--vcd2-fg) !important; border-bottom: 1px solid var(--vcd2-surface) !important; }
+findbar { background: var(--vcd2-deep) !important; color: var(--vcd2-fg) !important; border-top: 1px solid var(--vcd2-surface) !important; }
+menupopup, panel { --panel-background: var(--vcd2-deep) !important; --panel-color: var(--vcd2-fg) !important; }

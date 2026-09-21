@@ -1,0 +1,46 @@
+/* ==========================================================================
+ * kitsunefox / vs-code-light — userChrome.css
+ * VS Code Light: bright clean theme with teal accents. "Let there be light."
+ * ========================================================================== */
+
+:root {
+  --vcl-bg:          #f5f5f5;
+  --vcl-deep:        #ffffff;
+  --vcl-surface:     #f0f0f0;
+  --vcl-surface1:    #e0e0e0;
+  --vcl-fg:          #32323d;
+  --vcl-muted:       #6a6a6d;
+  --vcl-teal:        #1a7f80;
+  --vcl-purple:      #6c5ce7;
+  --vcl-orange:      #d2a865;
+  --vcl-red:         #d19a66;
+}
+
+:root { --kitsune-accent: var(--vcl-teal); }
+
+* { scrollbar-color: var(--vcl-surface1) var(--vcl-deep) !important; }
+
+#navigator-toolbox { background: var(--vcl-deep) !important; border-bottom: 1px solid var(--vcl-surface) !important; }
+#TabsToolbar { background: var(--vcl-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--vcl-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--vcl-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--vcl-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--vcl-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--vcl-orange) !important; color: var(--vcl-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--vcl-teal) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--vcl-surface) !important; }
+
+#nav-bar { background: var(--vcl-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--vcl-surface) !important; }
+#urlbar-background { background: var(--vcl-deep) !important; border: 1px solid var(--vcl-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--vcl-fg) !important; }
+
+#PersonalToolbar { background: var(--vcl-bg) !important; color: var(--vcl-fg) !important; }
+#sidebar-box { background: var(--vcl-deep) !important; }
+#sidebar-header { background: var(--vcl-deep) !important; color: var(--vcl-fg) !important; border-bottom: 1px solid var(--vcl-surface) !important; }
+findbar { background: var(--vcl-deep) !important; color: var(--vcl-fg) !important; border-top: 1px solid var(--vcl-surface) !important; }
+menupopup, panel { --panel-background: var(--vcl-deep) !important; --panel-color: var(--vcl-fg) !important; }

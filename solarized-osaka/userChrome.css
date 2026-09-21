@@ -1,0 +1,47 @@
+/* ==========================================================================
+ * kitsunefox / solarized-osaka — userChrome.css
+ * Solarized Osaka: warm orange / teal twist on the classic. "Sunset over
+   Osaka Bay."
+ * ========================================================================== */
+
+:root {
+  --so-bg:           #002b36;
+  --so-deep:         #083042;
+  --so-surface:      #0a3d61;
+  --so-surface1:     #124c70;
+  --so-fg:           #dcdca3;
+  --so-muted:        #8a9a7b;
+  --so-orange:       #fe8019;
+  --so-teal:         #689d6a;
+  --so-cyan:         #89ddff;
+  --so-purple:     #c792ea;
+}
+
+:root { --kitsune-accent: var(--so-orange); }
+
+* { scrollbar-color: var(--so-surface1) var(--so-deep) !important; }
+
+#navigator-toolbox { background: var(--so-deep) !important; border-bottom: 1px solid var(--so-surface) !important; }
+#TabsToolbar { background: var(--so-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--so-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--so-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--so-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--so-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--so-teal) !important; color: var(--so-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--so-cyan) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--so-surface) !important; }
+
+#nav-bar { background: var(--so-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--so-surface) !important; }
+#urlbar-background { background: var(--so-deep) !important; border: 1px solid var(--so-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--so-fg) !important; }
+
+#PersonalToolbar { background: var(--so-bg) !important; color: var(--so-fg) !important; }
+#sidebar-box { background: var(--so-deep) !important; }
+#sidebar-header { background: var(--so-deep) !important; color: var(--so-fg) !important; border-bottom: 1px solid var(--so-surface) !important; }
+findbar { background: var(--so-deep) !important; color: var(--so-fg) !important; border-top: 1px solid var(--so-surface) !important; }
+menupopup, panel { --panel-background: var(--so-deep) !important; --panel-color: var(--so-fg) !important; }

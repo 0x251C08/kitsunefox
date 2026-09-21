@@ -1,0 +1,48 @@
+/* ==========================================================================
+ * kitsunefox / solarized-light — userChrome.css
+ * Solarized Light: bright charcoal / blue-gray. "Daylight readability."
+ * ========================================================================== */
+
+:root {
+  --sl-bg:           #fdf6e3;
+  --sl-deep:         #f5c4e1;  /* typo intentional for deep, will fix below */
+  --sl-deep:         #eee8d5;
+  --sl-surface:      #eee8d5;
+  --sl-surface1:     #93a1a1;
+  --sl-fg:           #657b83;
+  --sl-muted:        #93a1a1;
+  --sl-blue:         #268bd2;
+  --sl-cyan:         #2aa198;
+  --sl-green:        #859900;
+  --sl-red:          #dc322f;
+  --sl-orange:       #cb4b16;
+}
+
+:root { --kitsune-accent: var(--sl-blue); }
+
+* { scrollbar-color: var(--sl-surface1) var(--sl-deep) !important; }
+
+#navigator-toolbox { background: var(--sl-deep) !important; border-bottom: 1px solid var(--sl-surface) !important; }
+#TabsToolbar { background: var(--sl-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--sl-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--sl-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--sl-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--sl-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--sl-orange) !important; color: var(--sl-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--sl-cyan) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--sl-surface) !important; }
+
+#nav-bar { background: var(--sl-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--sl-surface) !important; }
+#urlbar-background { background: var(--sl-deep) !important; border: 1px solid var(--sl-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--sl-fg) !important; }
+
+#PersonalToolbar { background: var(--sl-bg) !important; color: var(--sl-fg) !important; }
+#sidebar-box { background: var(--sl-deep) !important; }
+#sidebar-header { background: var(--sl-deep) !important; color: var(--sl-fg) !important; border-bottom: 1px solid var(--sl-surface) !important; }
+findbar { background: var(--sl-deep) !important; color: var(--sl-fg) !important; border-top: 1px solid var(--sl-surface) !important; }
+menupopup, panel { --panel-background: var(--sl-deep) !important; --panel-color: var(--sl-fg) !important; }

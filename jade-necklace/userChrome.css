@@ -1,0 +1,46 @@
+/* ==========================================================================
+ * kitsunefox / jade-necklace — userChrome.css
+ * Jade Necklace: emerald green + pink accent. "A string of jade, a touch of
+   rose."
+ * ========================================================================== */
+
+:root {
+  --jnl-bg:          #0d1a13;
+  --jnl-deep:        #08100c;
+  --jnl-surface:     #1a2a22;
+  --jnl-surface1:    #243530;
+  --jnl-fg:          #c8e6c9;
+  --jnl-muted:       #6b8f7a;
+  --jnl-emerald:     #50c878;
+  --jnl-pink:        #d94a6e;
+  --jnl-lime:        #a3e635;
+}
+
+:root { --kitsune-accent: var(--jnl-emerald); }
+
+* { scrollbar-color: var(--jnl-surface1) var(--jnl-deep) !important; }
+
+#navigator-toolbox { background: var(--jnl-deep) !important; border-bottom: 1px solid var(--jnl-surface) !important; }
+#TabsToolbar { background: var(--jnl-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--jnl-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--jnl-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--jnl-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--jnl-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--jnl-pink) !important; color: var(--jnl-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--jnl-lime) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--jnl-surface) !important; }
+
+#nav-bar { background: var(--jnl-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--jnl-surface) !important; }
+#urlbar-background { background: var(--jnl-deep) !important; border: 1px solid var(--jnl-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--jnl-fg) !important; }
+
+#PersonalToolbar { background: var(--jnl-bg) !important; color: var(--jnl-fg) !important; }
+#sidebar-box { background: var(--jnl-deep) !important; }
+#sidebar-header { background: var(--jnl-deep) !important; color: var(--jnl-fg) !important; border-bottom: 1px solid var(--jnl-surface) !important; }
+findbar { background: var(--jnl-deep) !important; color: var(--jnl-fg) !important; border-top: 1px solid var(--jnl-surface) !important; }
+menupopup, panel { --panel-background: var(--jnl-deep) !important; --panel-color: var(--jnl-fg) !important; }

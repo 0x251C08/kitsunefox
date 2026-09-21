@@ -1,0 +1,44 @@
+/* ==========================================================================
+ * kitsunefox / vs-code-minimal — userChrome.css
+ * VS Code Minimal: clean dark with subtle cyan. "Less is more."
+ * ========================================================================== */
+
+:root {
+  --vcm-bg:          #1e1e1e;
+  --vcm-deep:        #1a1a1a;
+  --vcm-surface:     #252526;
+  --vcm-surface1:    #303030;
+  --vcm-fg:          #d4d4d4;
+  --vcm-muted:       #858585;
+  --vcm-cyan:        #79d8cc;
+  --vcm-gray:        #555555;
+}
+
+:root { --kitsune-accent: var(--vcm-cyan); }
+
+* { scrollbar-color: var(--vcm-surface1) var(--vcm-deep) !important; }
+
+#navigator-toolbox { background: var(--vcm-deep) !important; border-bottom: 1px solid var(--vcm-surface) !important; }
+#TabsToolbar { background: var(--vcm-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--vcm-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--vcm-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--vcm-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--vcm-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--vcm-gray) !important; color: var(--vcm-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--vcm-cyan) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--vcm-surface) !important; }
+
+#nav-bar { background: var(--vcm-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--vcm-surface) !important; }
+#urlbar-background { background: var(--vcm-deep) !important; border: 1px solid var(--vcm-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--vcm-fg) !important; }
+
+#PersonalToolbar { background: var(--vcm-bg) !important; color: var(--vcm-fg) !important; }
+#sidebar-box { background: var(--vcm-deep) !important; }
+#sidebar-header { background: var(--vcm-deep) !important; color: var(--vcm-fg) !important; border-bottom: 1px solid var(--vcm-surface) !important; }
+findbar { background: var(--vcm-deep) !important; color: var(--vcm-fg) !important; border-top: 1px solid var(--vcm-surface) !important; }
+menupopup, panel { --panel-background: var(--vcm-deep) !important; --panel-color: var(--vcm-fg) !important; }

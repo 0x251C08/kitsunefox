@@ -1,0 +1,44 @@
+/* ==========================================================================
+ * kitsunefox / void — userChrome.css
+ * Void: pure emptiness. Nothing but black and the essentials. "There is no
+   spoon."
+ * ========================================================================== */
+
+:root {
+  --void-bg:         #000000;
+  --void-deep:       #000000;
+  --void-surface:    #111111;
+  --void-surface1:   #222222;
+  --void-fg:         #ffffff;
+  --void-muted:      #444444;
+  --void-cursor:     #ffffff;
+}
+
+:root { --kitsune-accent: var(--void-fg); }
+
+* { scrollbar-color: var(--void-surface1) var(--void-deep) !important; }
+
+#navigator-toolbox { background: var(--void-deep) !important; border-bottom: 1px solid var(--void-surface) !important; }
+#TabsToolbar { background: var(--void-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--void-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--void-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--void-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--void-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--void-fg) !important; color: var(--void-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--void-fg) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--void-surface) !important; }
+
+#nav-bar { background: var(--void-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--void-surface) !important; }
+#urlbar-background { background: var(--void-deep) !important; border: 1px solid var(--void-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--void-fg) !important; }
+
+#PersonalToolbar { background: var(--void-bg) !important; color: var(--void-fg) !important; }
+#sidebar-box { background: var(--void-deep) !important; }
+#sidebar-header { background: var(--void-deep) !important; color: var(--void-fg) !important; border-bottom: 1px solid var(--void-surface) !important; }
+findbar { background: var(--void-deep) !important; color: var(--void-fg) !important; border-top: 1px solid var(--void-surface) !important; }
+menupopup, panel { --panel-background: var(--void-deep) !important; --panel-color: var(--void-fg) !important; }

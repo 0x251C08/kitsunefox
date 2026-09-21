@@ -1,0 +1,47 @@
+/* ==========================================================================
+ * kitsunefox / neo-sploosh — userChrome.css
+ * Neo Sploosh: cyan / magenta / black. "Neon on dark, like a synthwave
+   dreamscape that never sleeps."
+ * ========================================================================== */
+
+:root {
+  --ns-bg:           #0a0a1e;
+  --ns-deep:         #050510;
+  --ns-surface:      #121225;
+  --ns-surface1:     #1c1c35;
+  --ns-fg:           #e0e0ff;
+  --ns-muted:        #6a6aff;
+  --ns-cyan:         #7fffff;
+  --ns-magenta:      #ff00ff;
+  --ns-yellow:       #fffabe;
+  --ns-orange:       #ff8800;
+}
+
+:root { --kitsune-accent: var(--ns-cyan); }
+
+* { scrollbar-color: var(--ns-surface1) var(--ns-deep) !important; }
+
+#navigator-toolbox { background: var(--ns-deep) !important; border-bottom: 1px solid var(--ns-surface) !important; }
+#TabsToolbar { background: var(--ns-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--ns-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--ns-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--ns-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--ns-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--ns-yellow) !important; color: var(--ns-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--ns-magenta) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--ns-surface) !important; }
+
+#nav-bar { background: var(--ns-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--ns-surface) !important; }
+#urlbar-background { background: var(--ns-deep) !important; border: 1px solid var(--ns-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--ns-fg) !important; }
+
+#PersonalToolbar { background: var(--ns-bg) !important; color: var(--ns-fg) !important; }
+#sidebar-box { background: var(--ns-deep) !important; }
+#sidebar-header { background: var(--ns-deep) !important; color: var(--ns-fg) !important; border-bottom: 1px solid var(--ns-surface) !important; }
+findbar { background: var(--ns-deep) !important; color: var(--ns-fg) !important; border-top: 1px solid var(--ns-surface) !important; }
+menupopup, panel { --panel-background: var(--ns-deep) !important; --panel-color: var(--ns-fg) !important; }

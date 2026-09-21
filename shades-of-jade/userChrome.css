@@ -1,0 +1,46 @@
+/* ==========================================================================
+ * kitsunefox / shades-of-jade — userChrome.css
+ * Shades of Jade: deep jade green / charcoal. "Calm in every shade of green."
+ * ========================================================================== */
+
+:root {
+  --soj-bg:          #1a1f16;
+  --soj-deep:        #141912;
+  --soj-surface:     #1d2521;
+  --soj-surface1:    #252d29;
+  --soj-fg:          #d0e8d0;
+  --soj-muted:       #7aa07a;
+  --soj-jade:        #88c0d0;
+  --soj-emerald:     #50c878;
+  --soj-forest:      #228B22;
+  --soj-lime:        #aaffc8;
+}
+
+:root { --kitsune-accent: var(--soj-jade); }
+
+* { scrollbar-color: var(--soj-surface1) var(--soj-deep) !important; }
+
+#navigator-toolbox { background: var(--soj-deep) !important; border-bottom: 1px solid var(--soj-surface) !important; }
+#TabsToolbar { background: var(--soj-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--soj-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--soj-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--soj-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--soj-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--soj-lime) !important; color: var(--soj-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--soj-emerald) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--soj-surface) !important; }
+
+#nav-bar { background: var(--soj-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--soj-surface) !important; }
+#urlbar-background { background: var(--soj-deep) !important; border: 1px solid var(--soj-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--soj-fg) !important; }
+
+#PersonalToolbar { background: var(--soj-bg) !important; color: var(--soj-fg) !important; }
+#sidebar-box { background: var(--soj-deep) !important; }
+#sidebar-header { background: var(--soj-deep) !important; color: var(--soj-fg) !important; border-bottom: 1px solid var(--soj-surface) !important; }
+findbar { background: var(--soj-deep) !important; color: var(--soj-fg) !important; border-top: 1px solid var(--soj-surface) !important; }
+menupopup, panel { --panel-background: var(--soj-deep) !important; --panel-color: var(--soj-fg) !important; }

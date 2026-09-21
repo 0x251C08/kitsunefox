@@ -1,0 +1,47 @@
+/* ==========================================================================
+ * kitsunefox / evergarden — userChrome.css
+ * Evergarden theme: soft teal / warm gray. "Nature never rushes but
+ * everything gets done."
+ * ========================================================================== */
+
+:root {
+  --eg-bg:           #232228;
+  --eg-deep:         #1d1c20;
+  --eg-surface:      #2a2a3e;
+  --eg-surface1:     #35354a;
+  --eg-fg:           #d4d4d4;
+  --eg-muted:        #737396;
+  --eg-teal:         #73daca;
+  --eg-peach:        #fe8019;
+  --eg-lavender:     #b19cd9;
+  --eg-coral:        #e57b7b;
+}
+
+:root { --kitsune-accent: var(--eg-teal); }
+
+* { scrollbar-color: var(--eg-surface1) var(--eg-deep) !important; }
+
+#navigator-toolbox { background: var(--eg-deep) !important; border-bottom: 1px solid var(--eg-surface) !important; }
+#TabsToolbar { background: var(--eg-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--eg-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--eg-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--eg-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--eg-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--eg-coral) !important; color: var(--eg-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--eg-teal) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--eg-surface) !important; }
+
+#nav-bar { background: var(--eg-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--eg-surface) !important; }
+#urlbar-background { background: var(--eg-deep) !important; border: 1px solid var(--eg-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--eg-fg) !important; }
+
+#PersonalToolbar { background: var(--eg-bg) !important; color: var(--eg-fg) !important; }
+#sidebar-box { background: var(--eg-deep) !important; }
+#sidebar-header { background: var(--eg-deep) !important; color: var(--eg-fg) !important; border-bottom: 1px solid var(--eg-surface) !important; }
+findbar { background: var(--eg-deep) !important; color: var(--eg-fg) !important; border-top: 1px solid var(--eg-surface) !important; }
+menupopup, panel { --panel-background: var(--eg-deep) !important; --panel-color: var(--eg-fg) !important; }

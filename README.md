@@ -10,6 +10,10 @@ A hardened + themed Firefox configuration focused on privacy, reduced browser no
 
 It is **not** a Firefox fork and **not** a browser extension.
 
+## v0.3.0
+
+61 styles (57 theme dirs + 4 Catppuccin root files) + hardened `user.js` + cosmetic `userContent.css`. New in v0.3.0: 24 compact themes — `coffee-shops`, `darcula`, `dotrb`, `dracula`, `evergarden`, `jade-necklace`, `japan-night`, `liminal`, `neo-sploosh`, `onedark-pro`, `rainbow`, `shades-of-jade`, `solarized`, `solarized-dark`, `solarized-light`, `solarized-osaka`, `travels`, `void`, `vs-code-dark`, `vs-code-dark-2019`, `vs-code-light`, `vs-code-light-2019`, `vs-code-minimal`, `vs-code-seti`. No functional change to `user.js`/`userContent.css` from v0.2.0.
+
 ## v0.2.0
 
 33 themes + hardened `user.js` + cosmetic `userContent.css`. New in v0.2.0: `retro82`, `cp437-dos`, `hackerman`, `sakura` (#ff9cae), `zenburn`, `tokyo-night-storm`, `material3-expressive`, `oceanic-next`, `gruvbox-material`, `moonlight`.
@@ -19,7 +23,7 @@ kitsunefox/
 ├── user.js
 ├── userContent.css
 ├── userChrome-*.css          # catppuccin frappe/latte/macchiato/mocha
-└── <theme>/userChrome.css    # 33 theme directories (see below)
+└── <theme>/userChrome.css    # 57 theme directories (see below)
 ````
 
 ### Tested on
@@ -59,7 +63,7 @@ The file is commented so the purpose and expected breakage of stricter settings 
 
 ### Firefox interface themes
 
-kitsunefox includes 37 `userChrome.css` styles for Firefox's own interface (33 theme dirs + 4 Catppuccin root files).
+kitsunefox includes 61 `userChrome.css` styles for Firefox's own interface (57 theme dirs + 4 Catppuccin root files).
 
 | Theme | Vibe |
 |---|---|
@@ -68,26 +72,42 @@ kitsunefox includes 37 `userChrome.css` styles for Firefox's own interface (33 t
 | `ayu` / `ayu-dark` / `ayu-light` / `ayu-mirage` | Ayu variants |
 | `base16` / `base16-light` | Base16 |
 | `bluedotrb` | blue dot |
-| `cp437-dos` *(new)* | DOS amber/CP437 terminal |
+| `coffee-shops` *(new in v0.3.0)* | warm coffeehouse |
+| `cp437-dos` *(new in v0.2.0)* | DOS amber/CP437 terminal |
 | `cyberpunk` | neon 2077 |
+| `darcula` *(new in v0.3.0)* | Darcula IDE |
+| `dotrb` *(new in v0.3.0)* | dot red-blue |
+| `dracula` *(new in v0.3.0)* | Dracula |
 | `everforest` | forest |
+| `evergarden` *(new in v0.3.0)* | evergarden |
 | `github-dark` | GitHub dark |
 | `gruvbox` / `gruvbox-light` / `gruvbox-v2` / `gruvbox-material` *(new)* | Gruvbox variants |
 | `hackerman` *(new)* | green phosphor |
+| `jade-necklace` *(new in v0.3.0)* | jade green |
+| `japan-night` *(new in v0.3.0)* | Japan night |
 | `kanagawa` | Kanagawa wave |
+| `liminal` *(new in v0.3.0)* | liminal space |
 | `material3-expressive` *(new)* | M3 Expressive |
 | `monokai` | Monokai |
 | `moonlight` *(new)* | indigo moonlight |
+| `neo-sploosh` *(new in v0.3.0)* | neon sploosh |
 | `nord` | Nord |
 | `oceanic-next` *(new)* | Oceanic Next |
 | `onedark` | One Dark |
+| `onedark-pro` *(new in v0.3.0)* | One Dark Pro |
 | `osaka-jade` | Osaka jade |
+| `rainbow` *(new in v0.3.0)* | rainbow |
 | `retro82` *(new)* | 80s synthwave |
 | `rose-pine` | Rosé Pine |
 | `sakura` *(new)* | #ff9cae soft pink |
+| `shades-of-jade` *(new in v0.3.0)* | jade shades |
+| `solarized` / `solarized-dark` / `solarized-light` / `solarized-osaka` *(new in v0.3.0)* | Solarized variants |
 | `solitude` | solitude |
 | `tokyo-night` / `tokyo-night-storm` *(new)* | Tokyo Night variants |
+| `travels` *(new in v0.3.0)* | travels |
 | `vantablack` | pure black |
+| `void` *(new in v0.3.0)* | void black |
+| `vs-code-dark` / `vs-code-dark-2019` / `vs-code-light` / `vs-code-light-2019` / `vs-code-minimal` / `vs-code-seti` *(new in v0.3.0)* | VS Code variants |
 | `zenburn` *(new)* | low-contrast Zenburn |
 | `userChrome-frappe/latte/macchiato/mocha.css` | Catppuccin |
 
@@ -320,7 +340,7 @@ For a completely clean state, creating a new Firefox profile is the simplest opt
 * `userChrome.css` relies on Firefox's legacy browser UI customization support and may require maintenance after Firefox UI changes.
 * `userContent.css` performs cosmetic hiding rather than network-level blocking.
 * Strict `user.js` settings intentionally reduce compatibility with some sites and browser features.
-* v0.2.0 tested on Firefox 155 / Waterfox 6.7.3 (Arch). New themes smoke-tested; no functional change to `user.js`/`userContent.css` from v0.1.0.
+* v0.3.0 adds 24 compact themes; no functional change to `user.js`/`userContent.css` from v0.2.0 (tested on Firefox 155 / Waterfox 6.7.3, Arch).
 
 No other known bugs are currently documented.
 

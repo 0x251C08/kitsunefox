@@ -1,0 +1,47 @@
+/* ==========================================================================
+ * kitsunefox / dracula — userChrome.css
+ * Classic Dracula theme: purple / cyan / dark gray. "Every edge is sharp."
+ * ========================================================================== */
+
+:root {
+  --dr-bg:           #282a36;
+  --dr-deep:         #21222b;
+  --dr-surface:      #44475a;
+  --dr-surface1:     #4b5263;
+  --dr-fg:           #f8f8f2;
+  --dr-muted:        #6272a4;
+  --dr-purple:       #bd93f9;
+  --dr-cyan:         #8be9fd;
+  --dr-orange:       #ff79c6;
+  --dr-green:        #50fa7b;
+  --dr-pink:         #ff5555;
+}
+
+:root { --kitsune-accent: var(--dr-purple); }
+
+* { scrollbar-color: var(--dr-surface1) var(--dr-deep) !important; }
+
+#navigator-toolbox { background: var(--dr-deep) !important; border-bottom: 1px solid var(--dr-surface) !important; }
+#TabsToolbar { background: var(--dr-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--dr-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--dr-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--dr-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--dr-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--dr-orange) !important; color: var(--dr-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--dr-cyan) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--dr-surface) !important; }
+
+#nav-bar { background: var(--dr-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--dr-surface) !important; }
+#urlbar-background { background: var(--dr-deep) !important; border: 1px solid var(--dr-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--dr-fg) !important; }
+
+#PersonalToolbar { background: var(--dr-bg) !important; color: var(--dr-fg) !important; }
+#sidebar-box { background: var(--dr-deep) !important; }
+#sidebar-header { background: var(--dr-deep) !important; color: var(--dr-fg) !important; border-bottom: 1px solid var(--dr-surface) !important; }
+findbar { background: var(--dr-deep) !important; color: var(--dr-fg) !important; border-top: 1px solid var(--dr-surface) !important; }
+menupopup, panel { --panel-background: var(--dr-deep) !important; --panel-color: var(--dr-fg) !important; }

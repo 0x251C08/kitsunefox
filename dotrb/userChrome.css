@@ -1,0 +1,61 @@
+/* ==========================================================================
+ * kitsunefox / dotrb — userChrome.css
+ * DOTA 2 Inspired Radiant Dire theme. Emerald green on black with
+ * gold accents. "Welcome to the server."
+ * ========================================================================== */
+
+:root {
+  --dotrb-bg:        #111111;
+  --dotrb-deep:      #0d0d0d;
+  --dotrb-surface:   #1e1e1e;
+  --dotrb-surface1:  #2a2a2a;
+  --dotrb-fg:        #d4c4b4;
+  --dotrb-muted:     #8b7b6b;
+  --dotrb-emerald:   #a2d9ce;
+  --dotrb-gold:      #d4a574;
+  --dotrb-ruby:      #e47271;
+  --dotrb-sapphire:  #75d1e5;
+  --dotrb-amber:     #e5c07b;
+}
+
+:root {
+  --kitsune-accent: var(--dotrb-gold);
+  --kitsune-accent-soft: color-mix(in srgb, var(--dotrb-gold) 18%, transparent);
+}
+
+* { scrollbar-color: var(--dotrb-surface1) var(--dotrb-deep) !important; }
+
+#navigator-toolbox { background: var(--dotrb-deep) !important; border-bottom: 1px solid var(--dotrb-surface) !important; }
+#TabsToolbar { background: var(--dotrb-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--dotrb-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--dotrb-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--dotrb-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--dotrb-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--dotrb-ruby) !important; color: var(--dotrb-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--dotrb-emerald) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--dotrb-surface) !important; }
+
+#nav-bar { background: var(--dotrb-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--dotrb-surface) !important; }
+#urlbar-background { background: var(--dotrb-deep) !important; border: 1px solid var(--dotrb-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--dotrb-fg) !important; }
+
+#PersonalToolbar { background: var(--dotrb-bg) !important; color: var(--dotrb-fg) !important; }
+#sidebar-box { background: var(--dotrb-deep) !important; }
+#sidebar-header { background: var(--dotrb-deep) !important; color: var(--dotrb-fg) !important; border-bottom: 1px solid var(--dotrb-surface) !important; }
+findbar { background: var(--dotrb-deep) !important; color: var(--dotrb-fg) !important; border-top: 1px solid var(--dotrb-surface) !important; }
+menupopup, panel { --panel-background: var(--dotrb-deep) !important; --panel-color: var(--dotrb-fg) !important; }
+
+/* ==========================================================================
+ * CUSTOM: emoji easter egg in console
+ * ==========================================================================
+Type the following in your Browser Console (Ctrl+Shift+J):
+  console.log('%c   ,     ,   ', 'color: #a2d9ce; font-family: "Comic Sans MS", sans-serif; font-size: 24px;')
+  console.log('%c   (_)   , (_)   ,', 'color: #d4a574; font-family: "Comic Sans MS", sans-serif; font-size: 20px;')
+  console.log('%c  /  __  \\ , /  __  \\', 'color: #e47271; font-family: "Comic Sans MS", sans-serif; font-size: 20px;')
+  console.log('%c (_/  \\/_ ,(_/  \\/_ ,', 'color: #75d1e5; font-family: "Comic Sans MS", sans-serif; font-size: 20px;')
+* ========================================================================== */
