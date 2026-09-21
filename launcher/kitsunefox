@@ -1,0 +1,38 @@
+#!/bin/sh
+# kitsunefox — launch Firefox/Waterfox through the kitsunefox launcher.
+#
+# Resolves a browser command and (optionally) a named profile, then execs
+# the browser with all passed arguments preserved. Writes nothing, creates
+# nothing, and never mutates profiles — the browser is the only thing that
+# runs.
+
+# 1. Resolve the browser command.
+#    KITSUNEFOX_BROWSER overrides everything and is used as-is, so it may be
+#    a single executable name or an absolute path. Otherwise try the usual
+#    suspects in order, resolved via PATH only — no hardcoded paths.
+if [ -n "$KITSUNEFOX_BROWSER" ]; then
+    BROWSER="$KITSUNEFOX_BROWSER"
+else
+    BROWSER=""
+    for candidate in firefox firefox-esr waterfox; do
+        if command -v "$candidate" >/dev/null 2>&1; then
+            BROWSER="$candidate"
+            break
+        fi
+    done
+fi
+
+if [ -z "$BROWSER" ]; then
+    echo "kitsunefox: no browser found (looked for firefox, firefox-esr, waterfox; or set KITSUNEFOX_BROWSER)" >&2
+    exit 1
+fi
+
+# 2. Optional named profile.
+#    KITSUNEFOX_PROFILE must name a profile the browser already knows about.
+#    The launcher only passes the name through — it never creates a profile.
+if [ -n "$KITSUNEFOX_PROFILE" ]; then
+    exec "$BROWSER" -P "$KITSUNEFOX_PROFILE" "$@"
+fi
+
+# 3. No profile override: launch normally with the default/current profile.
+exec "$BROWSER" "$@"
