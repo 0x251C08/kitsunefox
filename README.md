@@ -3,7 +3,7 @@
 A hardened + themed Firefox configuration focused on privacy, reduced browser noise, and a customizable Firefox interface.
 
 > [!NOTE]
-> This is the original kitsunefox repo, if you want to access forks, click the forks button to view all forks of kitsunefox.
+> This is the original kitsunefox repo, if you want to access forks, click the forks button to [view all forks of kitsunefox](https://github.com/0x251C08/kitsunefox/forks).
 
 `kitsunefox` combines:
 
