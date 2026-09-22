@@ -245,6 +245,56 @@ Restart Firefox again.
 
 ---
 
+## 7. Optional: Linux launcher
+
+A small POSIX `sh` launcher is included at `launcher/kitsunefox`.
+
+It resolves a browser command and optionally a named profile, then execs the
+browser with all passed arguments preserved. It writes nothing and never
+creates or mutates profiles.
+
+* `KITSUNEFOX_BROWSER` — optional. Override the browser command (a single
+  executable name or absolute path). Default: the first of `firefox`,
+  `firefox-esr`, `waterfox` found in `PATH`.
+* `KITSUNEFOX_PROFILE` — optional. The Firefox Profile Manager **name** of the
+  profile to launch, passed through with `-P NAME`. It is the
+  profile *name* (as shown in `about:profiles` / the Profile Manager) — not
+  the `--name` argument, and not a filesystem path for `--profile`. The
+  profile must already exist in the browser; the launcher does not create it.
+  Unset: launches the browser's default/current profile.
+
+To use it:
+
+```text
+cp launcher/kitsunefox ~/.local/bin/kitsunefox
+chmod +x ~/.local/bin/kitsunefox
+```
+
+Optional desktop entry:
+
+```text
+cp launcher/kitsunefox.desktop ~/.local/share/applications/
+```
+
+Graphical desktop sessions may not include `~/.local/bin` in `PATH`. If the
+desktop entry cannot find `kitsunefox`, edit its `Exec=` line to use the
+launcher's absolute path, for example:
+
+```text
+Exec=/home/USER/.local/bin/kitsunefox %U
+```
+
+The desktop entry launches the browser without forcing a profile. To launch a
+named profile through it, set `KITSUNEFOX_PROFILE` in the `Exec=` line:
+
+```text
+Exec=env KITSUNEFOX_PROFILE=NAME kitsunefox %U
+```
+
+Remove the entry by deleting `~/.local/share/applications/kitsunefox.desktop`.
+
+---
+
 # Important compatibility notes
 
 kitsunefox intentionally uses some aggressive privacy settings.

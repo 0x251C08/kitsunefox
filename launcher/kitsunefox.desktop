@@ -1,0 +1,21 @@
+[Desktop Entry]
+# Kitsunefox launcher desktop entry (template).
+#
+# This entry invokes the launcher WITHOUT forcing a profile — it launches the
+# browser's default/current profile. KITSUNEFOX_PROFILE is an optional
+# per-user override; see the README "Optional: Linux launcher" section.
+#
+# To launch a specific named profile instead of the default one, use e.g.:
+#   Exec=env KITSUNEFOX_PROFILE=NAME kitsunefox %U
+# If `kitsunefox` is not on your PATH, use its absolute path, e.g.:
+#   Exec=/home/USER/.local/bin/kitsunefox %U
+Type=Application
+Name=Kitsunefox
+Comment=Launch the web browser through the kitsunefox launcher
+Exec=kitsunefox %U
+Icon=web-browser
+Terminal=false
+StartupNotify=true
+Categories=Network;WebBrowser;
+MimeType=x-scheme-handler/http;x-scheme-handler/https;text/html;
+Keywords=firefox;waterfox;browser;kitsunefox;
