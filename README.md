@@ -2,6 +2,9 @@
 
 A hardened + themed Firefox configuration focused on privacy, reduced browser noise, and a customizable Firefox interface.
 
+> [!NOTE]
+> This is the original kitsunefox repo, if you want to access forks, click the forks button to view all forks of kitsunefox.
+
 `kitsunefox` combines:
 
 - a hardened `user.js`
