@@ -13,6 +13,16 @@ A hardened + themed Firefox configuration focused on privacy, reduced browser no
 
 It is **not** a Firefox fork and **not** a browser extension.
 
+## v0.3.1
+
+Fixes the "theme doesn't apply" failure reported on Firefox 156 (stock-looking UI despite a correct `chrome/userChrome.css`, as in the Discord-login screenshot):
+
+* `user.js` now sets `toolkit.legacyUserProfileCustomizations.stylesheets = true`, so Firefox 69+ actually loads `chrome/userChrome.css` / `chrome/userContent.css`. Previously this was a manual `about:config` step, and skipping it silently disabled all 61 styles.
+* Removed the stale nested `kitsunefox/` snapshot directory (v0.1.0-era duplicate that shadowed real paths and confused installation).
+* Content fills the window again: `privacy.resistFingerprinting.letterboxing` is now `false` (RFP itself stays on). Previously letterboxing shrank pages into gray gutters, as in the screenshot.
+* Startup shows the Firefox homepage (`about:home`, new-tab page on) instead of a blank screen.
+* No theme changes; still 61 styles (57 theme dirs + 4 Catppuccin root files). Verified on Firefox 156.
+
 ## v0.3.0
 
 61 styles (57 theme dirs + 4 Catppuccin root files) + hardened `user.js` + cosmetic `userContent.css`. New in v0.3.0: 24 compact themes — `coffee-shops`, `darcula`, `dotrb`, `dracula`, `evergarden`, `jade-necklace`, `japan-night`, `liminal`, `neo-sploosh`, `onedark-pro`, `rainbow`, `shades-of-jade`, `solarized`, `solarized-dark`, `solarized-light`, `solarized-osaka`, `travels`, `void`, `vs-code-dark`, `vs-code-dark-2019`, `vs-code-light`, `vs-code-light-2019`, `vs-code-minimal`, `vs-code-seti`. No functional change to `user.js`/`userContent.css` from v0.2.0.
@@ -22,7 +32,7 @@ It is **not** a Firefox fork and **not** a browser extension.
 33 themes + hardened `user.js` + cosmetic `userContent.css`. New in v0.2.0: `retro82`, `cp437-dos`, `hackerman`, `sakura` (#ff9cae), `zenburn`, `tokyo-night-storm`, `material3-expressive`, `oceanic-next`, `gruvbox-material`, `moonlight`.
 
 ```text
-kitsunefox/
+./
 ├── user.js
 ├── userContent.css
 ├── userChrome-*.css          # catppuccin frappe/latte/macchiato/mocha
@@ -31,6 +41,7 @@ kitsunefox/
 
 ### Tested on
 
+* Firefox 156
 * Firefox 155
 * Waterfox 6.7.3
 * Arch Linux
@@ -169,14 +180,14 @@ Find the profile you want to use and open its **Root Directory**.
 Copy:
 
 ```text
-kitsunefox/user.js
+user.js
 ```
 
 into the profile root, next to Firefox's `prefs.js`.
 
 Restart Firefox.
 
-`user.js` is applied when Firefox starts.
+`user.js` is applied when Firefox starts. It also sets `toolkit.legacyUserProfileCustomizations.stylesheets = true` (new in v0.3.1), so step 3 below is now automatic on fresh profiles — still verify it in `about:config` if a theme doesn't apply.
 
 ## 3. Enable custom Firefox CSS
 
@@ -316,7 +327,7 @@ Depending on your needs, the default `user.js` can break or disable functionalit
 * autoplay
 * some cross-site login or embed flows
 
-`privacy.resistFingerprinting` and letterboxing are also enabled.
+`privacy.resistFingerprinting` is enabled; letterboxing stays off so pages fill the window (set it `true` in `user-overrides.js` if you prefer standard window sizes).
 
 Review `user.js` before using it if compatibility is more important to you than maximum hardening.
 
@@ -388,12 +399,24 @@ For a completely clean state, creating a new Firefox profile is the simplest opt
 
 ---
 
+# Troubleshooting: theme doesn't apply
+
+Symptom: stock-looking UI despite copying a theme (like the v0.3.0 Firefox 156 screenshot).
+
+1. `about:config` → `toolkit.legacyUserProfileCustomizations.stylesheets` must be `true` (v0.3.1 `user.js` sets this; older copies need a restart after flipping it).
+2. The file must be named exactly `chrome/userChrome.css` (lowercase `chrome/`, capital `C` in `userChrome.css`) inside the profile's **Root Directory** from `about:profiles` — not the Local Directory, not `userChrome-mocha.css`.
+3. Restart Firefox after both steps. Keep `user.js` in the profile root (next to `prefs.js`), not inside `chrome/`.
+
+Note: `userChrome.css` only themes Firefox's own interface, never web pages — Discord/websites keep their own look. Gray gutters around page content were RFP letterboxing (off by default since v0.3.1).
+
+---
+
 # Known limitations
 
 * `userChrome.css` relies on Firefox's legacy browser UI customization support and may require maintenance after Firefox UI changes.
 * `userContent.css` performs cosmetic hiding rather than network-level blocking.
 * Strict `user.js` settings intentionally reduce compatibility with some sites and browser features.
-* v0.3.0 adds 24 compact themes; no functional change to `user.js`/`userContent.css` from v0.2.0 (tested on Firefox 155 / Waterfox 6.7.3, Arch).
+* v0.3.1 fixes the Firefox 156 "theme doesn't apply" report (stylesheets pref now enforced, stale nested dir removed, letterboxing off, homepage shown); no theme changes from v0.3.0 (tested on Firefox 156, Arch).
 
 No other known bugs are currently documented.
 

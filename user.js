@@ -11,8 +11,8 @@
  *   [EXTRA]    long-stable pref not present in the cited upstream snapshot
  *              (verified from years of stable Firefox behavior, not invented)
  *
- * BREAKAGE YOU SHOULD EXPECT: RFP letterboxes windows and can break some
- *   sites; WebGL off breaks maps/3D; EME off breaks Netflix/Spotify;
+ * BREAKAGE YOU SHOULD EXPECT: RFP can break some sites (letterboxing
+ *   stays off so pages fill the window/fullscreen); WebGL off breaks maps/3D; EME off breaks Netflix/Spotify;
  *   no-history + shutdown wipe forgets logins; password saving is off
  *   (use a real password manager); XOriginPolicy referers break some
  *   logins/embeds; autoplay/push/clipboard-JS/gamepads are off.
@@ -25,13 +25,19 @@
  *      open about:config, sort by Status, "Reset" every modified pref.
  *****************************************************************************/
 
-/* ===== 0000 STARTUP / HOMEPAGE / NEWTAB (blank everything) ===== */
-user_pref("browser.startup.homepage", "chrome://browser/content/blanktab.html");
+/* ===== 0000 STARTUP / HOMEPAGE / NEWTAB (show homepage) ===== */
+user_pref("browser.startup.homepage", "about:home");
 user_pref("browser.startup.homepage_override.mstone", "ignore");
-user_pref("browser.newtabpage.enabled", false);
+user_pref("browser.newtabpage.enabled", true);
 
 /* ===== 0100 GEOLOCATION ===== */
 user_pref("geo.enabled", false); // [STRICTER] breaks maps/location prompts
+
+/* ===== 0150 CUSTOM CHROME CSS (required for kitsunefox themes) =====
+ * Firefox 69+ ignores chrome/userChrome.css and chrome/userContent.css
+ * unless this is true. Without it, every kitsunefox theme silently does
+ * nothing (stock UI, exactly like the v0.3.0 Firefox 156 report). */
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
 /* ===== 0200 SAFE BROWSING (keep malware/phishing lists, kill download snooping) ===== */
 user_pref("browser.safebrowsing.downloads.remote.enabled", false);
@@ -97,10 +103,12 @@ user_pref("network.http.referer.XOriginTrimmingPolicy", 2); // origin-only cross
 user_pref("network.http.referer.XOriginPolicy", 2); // [STRICTER] same-host only; breaks some logins/embeds
 
 /* ===== 0800 RESIST FINGERPRINTING (RFP) =====
- * The single biggest anti-tracking switch. Letterboxes windows to standard
- * sizes and spoofs dozens of APIs. Some sites will look/behave oddly. */
+ * The single biggest anti-tracking switch. Spoofs dozens of APIs.
+ * Letterboxing is OFF so pages fill the window/fullscreen instead of
+ * shrinking into gray gutters (the v0.3.0 Firefox 156 report). Re-enable
+ * with `true` in user-overrides.js if you prefer standard window sizes. */
 user_pref("privacy.resistFingerprinting", true); // [STRICTER]
-user_pref("privacy.resistFingerprinting.letterboxing", true); // [STRICTER]
+user_pref("privacy.resistFingerprinting.letterboxing", false);
 user_pref("privacy.resistFingerprinting.block_mozAddonManager", true);
 
 /* ===== 0900 WEBRTC / MEDIA / DRM ===== */
