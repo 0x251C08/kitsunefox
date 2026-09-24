@@ -13,6 +13,15 @@ A hardened + themed Firefox configuration focused on privacy, reduced browser no
 
 It is **not** a Firefox fork and **not** a browser extension.
 
+## v0.3.2
+
+Stay-logged-in release: logins, sessions, tabs and history now survive browser restarts and closing the browser.
+
+* Shutdown wipe off (`sanitizeOnShutdown = false`, cookies/storage/formdata kept; only cache still clears).
+* History on, session restore on (`privacy_level = 0`, 25 closed tabs undoable, crash resume on).
+* Login saving and form autofill follow Firefox defaults (`rememberSignons`/`autofillForms` on; address and credit-card autofill stay off).
+* To go back to amnesiac behavior, override per-line in `user-overrides.js`. No theme changes from v0.3.1.
+
 ## v0.3.1
 
 Fixes the "theme doesn't apply" failure reported on Firefox 156 (stock-looking UI despite a correct `chrome/userChrome.css`, as in the Discord-login screenshot):
@@ -318,14 +327,14 @@ Depending on your needs, the default `user.js` can break or disable functionalit
 * WebRTC calls and browser screen sharing
 * WebGL-based sites and 3D applications
 * DRM services such as some streaming platforms
-* browser password saving
-* browser autofill
-* browser history
+* browser address and credit-card autofill
 * web push notifications
 * gamepad APIs
 * geolocation
 * autoplay
 * some cross-site login or embed flows
+
+Logins, sessions, tabs and browser history persist across restarts by default (since v0.3.2).
 
 `privacy.resistFingerprinting` is enabled; letterboxing stays off so pages fill the window (set it `true` in `user-overrides.js` if you prefer standard window sizes).
 
@@ -416,7 +425,7 @@ Note: `userChrome.css` only themes Firefox's own interface, never web pages — 
 * `userChrome.css` relies on Firefox's legacy browser UI customization support and may require maintenance after Firefox UI changes.
 * `userContent.css` performs cosmetic hiding rather than network-level blocking.
 * Strict `user.js` settings intentionally reduce compatibility with some sites and browser features.
-* v0.3.1 fixes the Firefox 156 "theme doesn't apply" report (stylesheets pref now enforced, stale nested dir removed, letterboxing off, homepage shown); no theme changes from v0.3.0 (tested on Firefox 156, Arch).
+* v0.3.2 keeps logins/sessions/history across restarts (shutdown wipe off, session restore on); no theme changes from v0.3.1 (tested on Firefox 156, Arch).
 
 No other known bugs are currently documented.
 

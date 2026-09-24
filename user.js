@@ -13,9 +13,9 @@
  *
  * BREAKAGE YOU SHOULD EXPECT: RFP can break some sites (letterboxing
  *   stays off so pages fill the window/fullscreen); WebGL off breaks maps/3D; EME off breaks Netflix/Spotify;
- *   no-history + shutdown wipe forgets logins; password saving is off
- *   (use a real password manager); XOriginPolicy referers break some
- *   logins/embeds; autoplay/push/clipboard-JS/gamepads are off.
+ *   logins/sessions/history persist across restarts by default (v0.3.2);
+ *   XOriginPolicy referers break some logins/embeds;
+ *   autoplay/push/clipboard-JS/gamepads are off.
  *
  * USE:
  *   1. Fresh profile recommended (about:profiles → create + set default)
@@ -86,17 +86,20 @@ user_pref("browser.cache.disk.enable", false); // RAM-only cache; slight perf co
 
 /* ===== 0600 COOKIES / SANITIZE / HISTORY / SESSION =====
  * NOTE: network.cookie.cookieBehavior=5 (total third-party blocking) is now
- * a Firefox default — not pinned here, already on. */
-user_pref("privacy.sanitize.sanitizeOnShutdown", true);
-user_pref("privacy.sanitize.timeSpan", 0); // clear everything, not just last hour
+ * a Firefox default — not pinned here, already on.
+ * v0.3.2: shutdown wipe is OFF so logins, sessions, tabs and history
+ * survive restarts. Re-enable per-line in user-overrides.js if you want
+ * amnesiac behavior back. */
+user_pref("privacy.sanitize.sanitizeOnShutdown", false);
+user_pref("privacy.sanitize.timeSpan", 0);
 user_pref("privacy.clearOnShutdown_v2.cache", true);
-user_pref("privacy.clearOnShutdown_v2.formdata", true);
-user_pref("privacy.clearOnShutdown_v2.cookiesAndStorage", true);
-// history+downloads already default-clear upstream; siteSettings kept (zoom/permissions)
-user_pref("places.history.enabled", false); // [STRICTER] no history at all
-user_pref("browser.sessionstore.privacy_level", 2);
-user_pref("browser.sessionstore.max_tabs_undo", 0); // [STRICTER] no reopen-closed-tab
-user_pref("browser.sessionstore.resume_from_crash", false); // [STRICTER]
+user_pref("privacy.clearOnShutdown_v2.formdata", false);
+user_pref("privacy.clearOnShutdown_v2.cookiesAndStorage", false);
+// siteSettings kept (zoom/permissions)
+user_pref("places.history.enabled", true);
+user_pref("browser.sessionstore.privacy_level", 0);
+user_pref("browser.sessionstore.max_tabs_undo", 25);
+user_pref("browser.sessionstore.resume_from_crash", true);
 
 /* ===== 0700 REFERERS ===== */
 user_pref("network.http.referer.XOriginTrimmingPolicy", 2); // origin-only cross-site
@@ -136,11 +139,14 @@ user_pref("dom.security.https_only_mode_send_http_background_request", false);
 user_pref("security.ssl.require_safe_negotiation", true);
 user_pref("security.cert_pinning.enforcement_level", 2); // strict HPKP-style pinning
 
-/* ===== 1200 PASSWORDS / FORMS / AUTOFILL (use a real password manager) ===== */
-user_pref("signon.rememberSignons", false); // [STRICTER] never save logins in-browser
-user_pref("signon.autofillForms", false);
-user_pref("signon.formlessCapture.enabled", false);
-user_pref("browser.formfill.enable", false);
+/* ===== 1200 PASSWORDS / FORMS / AUTOFILL =====
+ * v0.3.2: login saving and form autofill follow Firefox defaults so you
+ * stay logged in across restarts. Prefer a real password manager over
+ * the built-in one; disable per-line in user-overrides.js if wanted. */
+user_pref("signon.rememberSignons", true);
+user_pref("signon.autofillForms", true);
+user_pref("signon.formlessCapture.enabled", true);
+user_pref("browser.formfill.enable", true);
 user_pref("extensions.formautofill.addresses.enabled", false); // [STRICTER]
 user_pref("extensions.formautofill.creditCards.enabled", false); // [STRICTER]
 
