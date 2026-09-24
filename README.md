@@ -13,6 +13,12 @@ A hardened + themed Firefox configuration focused on privacy, reduced browser no
 
 It is **not** a Firefox fork and **not** a browser extension.
 
+## v0.4.0
+
+* `user.js` rewritten from scratch as an original kitsunefox configuration. New philosophy: **usable privacy** — every pref is invisible in daily use, and anything that would break sites is left at the Firefox default. Only prefs that differ from stock are set (~45 instead of ~90). Convenience kept: homepage, saved logins, history, sessions, WebRTC calls, WebGL, DRM streaming, gamepads, push, geolocation prompts, clipboard, disk cache, hotel-WiFi logins.
+* New `./install-themes-only.sh`: installs just the theme CSS into your Firefox profile — no `user.js`, no hardening, never launches the browser. Opposite of `launcher/` (the graphical setup, which installs a desktop entry that *starts* the browser).
+* Upgrading from v0.3.x: `user.js` can set prefs but never unset them, so either use a fresh profile or reset the dropped v0.3.x prefs in `about:config` (full list in the `user.js` header). No theme changes.
+
 ## v0.3.2
 
 Stay-logged-in release: logins, sessions, tabs and history now survive browser restarts and closing the browser.
@@ -63,26 +69,27 @@ Other Firefox versions and operating systems may work, but have not yet been exp
 
 ### Hardened Firefox configuration
 
-`user.js` applies a stricter privacy-oriented Firefox configuration inspired by the Arkenfox project.
+`user.js` is an original kitsunefox configuration (not derived from Arkenfox): quiet, usable privacy with zero intended breakage.
 
-Current hardening includes changes around:
+It changes:
 
-* telemetry and Firefox studies
-* sponsored content
-* speculative networking and prefetching
-* browser history and shutdown cleanup
-* fingerprinting resistance
-* WebRTC and media APIs
-* WebGL
-* HTTPS-only behavior
-* password and form storage
-* URL-bar suggestions
-* geolocation
-* push notifications
-* DRM
-* autoplay
+* telemetry, studies, experiments and crash reporting (all off)
+* sponsored content on the new-tab page (off)
+* link prefetching and speculative connections (off)
+* remote safe-browsing download checks (off, blocklists stay on)
+* fingerprinting resistance (on, without letterboxing) + cross-site referer trimming
+* urlbar search suggestions and sponsored suggestions (off)
+* HTTPS-only mode + stricter TLS (plain HTTP needs a per-site bypass)
+* autoplay (videos wait for your click)
+* Pocket, screenshots upload, shopping sidebar, translations (off)
 
-The file is commented so the purpose and expected breakage of stricter settings can be reviewed directly.
+It deliberately leaves at Firefox defaults so things keep working:
+
+* homepage, saved logins, form autofill, history, sessions and tab restore
+* WebRTC calls and screen sharing, WebGL, DRM streaming, gamepads
+* push notifications, geolocation permission prompts, clipboard, disk cache
+
+The file documents every choice, including the full "left at default" list.
 
 ### Firefox interface themes
 
@@ -233,7 +240,7 @@ Pick the kitsunefox `userChrome` stylesheet you want.
 For example:
 
 ```text
-kitsunefox/userChrome-mocha.css
+userChrome-mocha.css
 ```
 
 Copy it to:
@@ -255,7 +262,7 @@ Restart Firefox.
 Copy:
 
 ```text
-kitsunefox/userContent.css
+userContent.css
 ```
 
 to:
@@ -318,25 +325,32 @@ Remove the entry by deleting `~/.local/share/applications/kitsunefox.desktop`.
 
 ---
 
+## 8. Themes only (no hardening, no launcher)
+
+If you want just the look — none of the `user.js` privacy changes and none of the graphical launcher setup — use the themes-only installer:
+
+```text
+./install-themes-only.sh --list
+./install-themes-only.sh mocha
+./install-themes-only.sh dracula --profile default-release --no-content
+```
+
+It copies the chosen theme to `<profile>/chrome/userChrome.css` (plus `userContent.css` unless `--no-content`) and touches nothing else: no `user.js`, no `prefs.js`, and it never launches the browser. Use `--profile NAME` for a named profile or `--profile-path PATH` for an exact directory. Afterwards, set `toolkit.legacyUserProfileCustomizations.stylesheets = true` in `about:config` and restart Firefox.
+
+---
+
 # Important compatibility notes
 
-kitsunefox intentionally uses some aggressive privacy settings.
+Since v0.4.0 the default `user.js` is designed for zero breakage: calls, screen sharing, WebGL, DRM streaming, password saving, history, geolocation prompts, push, gamepads and clipboard all work.
 
-Depending on your needs, the default `user.js` can break or disable functionality including:
+What can still differ from stock Firefox:
 
-* WebRTC calls and browser screen sharing
-* WebGL-based sites and 3D applications
-* DRM services such as some streaming platforms
-* browser address and credit-card autofill
-* web push notifications
-* gamepad APIs
-* geolocation
-* autoplay
-* some cross-site login or embed flows
+* plain-HTTP sites show a bypassable warning (per-site exception via the padlock)
+* videos wait for your click (autoplay blocked)
+* `privacy.resistFingerprinting` is on and can make some sites look or behave oddly; letterboxing stays off so pages fill the window (set it `true` in `user-overrides.js` if you prefer standard window sizes)
+* some cross-site login or embed flows (referers trimmed cross-site)
 
 Logins, sessions, tabs and browser history persist across restarts by default (since v0.3.2).
-
-`privacy.resistFingerprinting` is enabled; letterboxing stays off so pages fill the window (set it `true` in `user-overrides.js` if you prefer standard window sizes).
 
 Review `user.js` before using it if compatibility is more important to you than maximum hardening.
 
@@ -424,8 +438,8 @@ Note: `userChrome.css` only themes Firefox's own interface, never web pages — 
 
 * `userChrome.css` relies on Firefox's legacy browser UI customization support and may require maintenance after Firefox UI changes.
 * `userContent.css` performs cosmetic hiding rather than network-level blocking.
-* Strict `user.js` settings intentionally reduce compatibility with some sites and browser features.
-* v0.3.2 keeps logins/sessions/history across restarts (shutdown wipe off, session restore on); no theme changes from v0.3.1 (tested on Firefox 156, Arch).
+* `user.js` can set prefs but never unset them: upgrading from v0.3.x keeps some dropped v0.3.x values (WebGL/WebRTC/DRM/push off etc.) until you reset them in `about:config` or use a fresh profile — see the `user.js` header.
+* v0.4.0 rewrites `user.js` as an original usable-privacy config and adds `install-themes-only.sh`; no theme changes (tested on Firefox 156, Arch).
 
 No other known bugs are currently documented.
 
@@ -433,9 +447,7 @@ No other known bugs are currently documented.
 
 # Credits
 
-The kitsunefox privacy configuration is inspired by the excellent [arkenfox user.js](https://github.com/arkenfox/user.js) project.
-
-The current `user.js` documents preferences checked against Arkenfox v144 while marking kitsunefox-specific stricter or additional settings separately.
+The kitsunefox `user.js` is an original configuration written for this project: usable privacy with zero intended breakage, kept as a deliberate alternative to maximum-hardening configurations such as the [arkenfox user.js](https://github.com/arkenfox/user.js) project.
 
 ---
 
