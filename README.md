@@ -103,10 +103,10 @@ kitsunefox includes 71 `userChrome.css` styles for Firefox's own interface (67 t
 |---|---|
 | `amberbyte` | warm amber |
 | `arc-blueberry` | Arc blue |
-| `aura` *(new, unreleased)* | midnight violet glow |
+| `aura` *(new in v0.5.0)* | midnight violet glow |
 | `ayu` / `ayu-dark` / `ayu-light` / `ayu-mirage` | Ayu variants |
 | `base16` / `base16-light` | Base16 |
-| `bit16` *(new, unreleased)* | custom retro-1980s CGA |
+| `bit16` *(new in v0.5.0)* | custom retro-1980s CGA |
 | `bluedotrb` | blue dot |
 | `coffee-shops` *(new in v0.3.0)* | warm coffeehouse |
 | `cp437-dos` *(new in v0.2.0)* | DOS amber/CP437 terminal |
@@ -116,7 +116,7 @@ kitsunefox includes 71 `userChrome.css` styles for Firefox's own interface (67 t
 | `dracula` *(new in v0.3.0)* | Dracula |
 | `everforest` | forest |
 | `evergarden` *(new in v0.3.0)* | evergarden |
-| `flexoki` / `flexoki-dark` / `flexoki-light` *(new, unreleased)* | Flexoki paper/dark/bright |
+| `flexoki` / `flexoki-dark` / `flexoki-light` *(new in v0.5.0)* | Flexoki paper/dark/bright |
 | `github-dark` | GitHub dark |
 | `gruvbox` / `gruvbox-light` / `gruvbox-v2` / `gruvbox-material` *(new)* | Gruvbox variants |
 | `hackerman` *(new)* | green phosphor |
@@ -124,9 +124,9 @@ kitsunefox includes 71 `userChrome.css` styles for Firefox's own interface (67 t
 | `japan-night` *(new in v0.3.0)* | Japan night |
 | `kanagawa` | Kanagawa wave |
 | `liminal` *(new in v0.3.0)* | liminal space |
-| `lucent-orng` *(new, unreleased)* | cream tangerine |
+| `lucent-orng` *(new in v0.5.0)* | cream tangerine |
 | `material3-expressive` *(new)* | M3 Expressive |
-| `matrix` *(new, unreleased)* | phosphor green |
+| `matrix` *(new in v0.5.0)* | phosphor green |
 | `monokai` | Monokai |
 | `moonlight` *(new)* | indigo moonlight |
 | `neo-sploosh` *(new in v0.3.0)* | neon sploosh |
@@ -134,7 +134,7 @@ kitsunefox includes 71 `userChrome.css` styles for Firefox's own interface (67 t
 | `oceanic-next` *(new)* | Oceanic Next |
 | `onedark` | One Dark |
 | `onedark-pro` *(new in v0.3.0)* | One Dark Pro |
-| `orng` *(new, unreleased)* | burnt ember orange |
+| `orng` *(new in v0.5.0)* | burnt ember orange |
 | `osaka-jade` | Osaka jade |
 | `rainbow` *(new in v0.3.0)* | rainbow |
 | `retro82` *(new)* | 80s synthwave |
@@ -143,13 +143,13 @@ kitsunefox includes 71 `userChrome.css` styles for Firefox's own interface (67 t
 | `shades-of-jade` *(new in v0.3.0)* | jade shades |
 | `solarized` / `solarized-dark` / `solarized-light` / `solarized-osaka` *(new in v0.3.0)* | Solarized variants |
 | `solitude` | solitude |
-| `synthwave84` *(new, unreleased)* | outrun neon pink |
+| `synthwave84` *(new in v0.5.0)* | outrun neon pink |
 | `tokyo-night` / `tokyo-night-storm` *(new)* | Tokyo Night variants |
 | `travels` *(new in v0.3.0)* | travels |
 | `vantablack` | pure black |
 | `void` *(new in v0.3.0)* | void black |
 | `vs-code-dark` / `vs-code-dark-2019` / `vs-code-light` / `vs-code-light-2019` / `vs-code-minimal` / `vs-code-seti` *(new in v0.3.0)* | VS Code variants |
-| `vercel` *(new, unreleased)* | Geist monochrome |
+| `vercel` *(new in v0.5.0)* | Geist monochrome |
 | `zenburn` *(new)* | low-contrast Zenburn |
 | `userChrome-frappe/latte/macchiato/mocha.css` | Catppuccin |
 
