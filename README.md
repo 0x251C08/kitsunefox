@@ -13,6 +13,10 @@ A hardened + themed Firefox configuration focused on privacy, reduced browser no
 
 It is **not** a Firefox fork and **not** a browser extension.
 
+## v0.5.0
+
+10 new compact themes: `vercel`, `matrix`, `orng`, `lucent-orng`, `flexoki`, `flexoki-dark`, `flexoki-light`, `synthwave84`, `aura`, `bit16` (custom retro-1980s CGA theme). 71 styles total (67 theme dirs + 4 Catppuccin root files).
+
 ## v0.4.0
 
 * `user.js` rewritten from scratch as an original kitsunefox configuration. New philosophy: **usable privacy** — every pref is invisible in daily use, and anything that would break sites is left at the Firefox default. Only prefs that differ from stock are set (~45 instead of ~90). Convenience kept: homepage, saved logins, history, sessions, WebRTC calls, WebGL, DRM streaming, gamepads, push, geolocation prompts, clipboard, disk cache, hotel-WiFi logins.
@@ -51,7 +55,7 @@ Fixes the "theme doesn't apply" failure reported on Firefox 156 (stock-looking U
 ├── user.js
 ├── userContent.css
 ├── userChrome-*.css          # catppuccin frappe/latte/macchiato/mocha
-└── <theme>/userChrome.css    # 57 theme directories (see below)
+└── <theme>/userChrome.css    # 67 theme directories (see below)
 ````
 
 ### Tested on
@@ -93,14 +97,16 @@ The file documents every choice, including the full "left at default" list.
 
 ### Firefox interface themes
 
-kitsunefox includes 61 `userChrome.css` styles for Firefox's own interface (57 theme dirs + 4 Catppuccin root files).
+kitsunefox includes 71 `userChrome.css` styles for Firefox's own interface (67 theme dirs + 4 Catppuccin root files).
 
 | Theme | Vibe |
 |---|---|
 | `amberbyte` | warm amber |
 | `arc-blueberry` | Arc blue |
+| `aura` *(new, unreleased)* | midnight violet glow |
 | `ayu` / `ayu-dark` / `ayu-light` / `ayu-mirage` | Ayu variants |
 | `base16` / `base16-light` | Base16 |
+| `bit16` *(new, unreleased)* | custom retro-1980s CGA |
 | `bluedotrb` | blue dot |
 | `coffee-shops` *(new in v0.3.0)* | warm coffeehouse |
 | `cp437-dos` *(new in v0.2.0)* | DOS amber/CP437 terminal |
@@ -110,6 +116,7 @@ kitsunefox includes 61 `userChrome.css` styles for Firefox's own interface (57 t
 | `dracula` *(new in v0.3.0)* | Dracula |
 | `everforest` | forest |
 | `evergarden` *(new in v0.3.0)* | evergarden |
+| `flexoki` / `flexoki-dark` / `flexoki-light` *(new, unreleased)* | Flexoki paper/dark/bright |
 | `github-dark` | GitHub dark |
 | `gruvbox` / `gruvbox-light` / `gruvbox-v2` / `gruvbox-material` *(new)* | Gruvbox variants |
 | `hackerman` *(new)* | green phosphor |
@@ -117,7 +124,9 @@ kitsunefox includes 61 `userChrome.css` styles for Firefox's own interface (57 t
 | `japan-night` *(new in v0.3.0)* | Japan night |
 | `kanagawa` | Kanagawa wave |
 | `liminal` *(new in v0.3.0)* | liminal space |
+| `lucent-orng` *(new, unreleased)* | cream tangerine |
 | `material3-expressive` *(new)* | M3 Expressive |
+| `matrix` *(new, unreleased)* | phosphor green |
 | `monokai` | Monokai |
 | `moonlight` *(new)* | indigo moonlight |
 | `neo-sploosh` *(new in v0.3.0)* | neon sploosh |
@@ -125,6 +134,7 @@ kitsunefox includes 61 `userChrome.css` styles for Firefox's own interface (57 t
 | `oceanic-next` *(new)* | Oceanic Next |
 | `onedark` | One Dark |
 | `onedark-pro` *(new in v0.3.0)* | One Dark Pro |
+| `orng` *(new, unreleased)* | burnt ember orange |
 | `osaka-jade` | Osaka jade |
 | `rainbow` *(new in v0.3.0)* | rainbow |
 | `retro82` *(new)* | 80s synthwave |
@@ -133,11 +143,13 @@ kitsunefox includes 61 `userChrome.css` styles for Firefox's own interface (57 t
 | `shades-of-jade` *(new in v0.3.0)* | jade shades |
 | `solarized` / `solarized-dark` / `solarized-light` / `solarized-osaka` *(new in v0.3.0)* | Solarized variants |
 | `solitude` | solitude |
+| `synthwave84` *(new, unreleased)* | outrun neon pink |
 | `tokyo-night` / `tokyo-night-storm` *(new)* | Tokyo Night variants |
 | `travels` *(new in v0.3.0)* | travels |
 | `vantablack` | pure black |
 | `void` *(new in v0.3.0)* | void black |
 | `vs-code-dark` / `vs-code-dark-2019` / `vs-code-light` / `vs-code-light-2019` / `vs-code-minimal` / `vs-code-seti` *(new in v0.3.0)* | VS Code variants |
+| `vercel` *(new, unreleased)* | Geist monochrome |
 | `zenburn` *(new)* | low-contrast Zenburn |
 | `userChrome-frappe/latte/macchiato/mocha.css` | Catppuccin |
 

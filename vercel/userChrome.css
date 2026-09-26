@@ -1,0 +1,49 @@
+/* ==========================================================================
+ * kitsunefox / vercel — userChrome.css
+ * Vercel Geist monochrome: pure black, white text, one blue accent.
+ * ========================================================================== */
+
+:root {
+  --vc-bg:           #000000;
+  --vc-deep:         #0a0a0a;
+  --vc-surface:      #1a1a1a;
+  --vc-surface1:     #333333;
+  --vc-fg:           #ededed;
+  --vc-muted:        #888888;
+  --vc-blue:         #0070f3;
+  --vc-cyan:         #79ffe1;
+  --vc-green:        #17c964;
+  --vc-red:          #f31260;
+}
+
+:root {
+  --kitsune-accent: var(--vc-blue);
+  --kitsune-accent-soft: color-mix(in srgb, var(--vc-blue) 22%, transparent);
+}
+
+* { scrollbar-color: var(--vc-surface1) var(--vc-deep) !important; }
+
+#navigator-toolbox { background: var(--vc-deep) !important; border-bottom: 1px solid var(--vc-surface) !important; }
+#TabsToolbar { background: var(--vc-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--vc-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--vc-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--vc-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--vc-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--vc-red) !important; color: var(--vc-fg) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--vc-cyan) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--vc-surface) !important; }
+
+#nav-bar { background: var(--vc-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--vc-surface) !important; }
+#urlbar-background { background: var(--vc-deep) !important; border: 1px solid var(--vc-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--vc-fg) !important; }
+
+#PersonalToolbar { background: var(--vc-bg) !important; color: var(--vc-fg) !important; }
+#sidebar-box { background: var(--vc-deep) !important; }
+#sidebar-header { background: var(--vc-deep) !important; color: var(--vc-fg) !important; border-bottom: 1px solid var(--vc-surface) !important; }
+findbar { background: var(--vc-deep) !important; color: var(--vc-fg) !important; border-top: 1px solid var(--vc-surface) !important; }
+menupopup, panel { --panel-background: var(--vc-deep) !important; --panel-color: var(--vc-fg) !important; }

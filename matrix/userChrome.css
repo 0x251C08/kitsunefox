@@ -1,0 +1,49 @@
+/* ==========================================================================
+ * kitsunefox / matrix — userChrome.css
+ * Follow the white rabbit: phosphor green on black. Red pill closes tabs.
+ * ========================================================================== */
+
+:root {
+  --mx-bg:           #000000;
+  --mx-deep:         #001100;
+  --mx-surface:      #003b00;
+  --mx-surface1:     #008f11;
+  --mx-fg:           #00ff41;
+  --mx-muted:        #008f11;
+  --mx-bright:       #33ff66;
+  --mx-amber:        #ffb000;
+  --mx-green:        #00ff41;
+  --mx-red:          #ff0000;
+}
+
+:root {
+  --kitsune-accent: var(--mx-fg);
+  --kitsune-accent-soft: color-mix(in srgb, var(--mx-fg) 22%, transparent);
+}
+
+* { scrollbar-color: var(--mx-surface1) var(--mx-deep) !important; }
+
+#navigator-toolbox { background: var(--mx-deep) !important; border-bottom: 1px solid var(--mx-surface) !important; }
+#TabsToolbar { background: var(--mx-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--mx-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--mx-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--mx-bright) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--mx-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--mx-red) !important; color: var(--mx-bg) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--mx-amber) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--mx-surface) !important; }
+
+#nav-bar { background: var(--mx-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--mx-surface) !important; }
+#urlbar-background { background: var(--mx-deep) !important; border: 1px solid var(--mx-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--mx-fg) !important; }
+
+#PersonalToolbar { background: var(--mx-bg) !important; color: var(--mx-fg) !important; }
+#sidebar-box { background: var(--mx-deep) !important; }
+#sidebar-header { background: var(--mx-deep) !important; color: var(--mx-fg) !important; border-bottom: 1px solid var(--mx-surface) !important; }
+findbar { background: var(--mx-deep) !important; color: var(--mx-fg) !important; border-top: 1px solid var(--mx-surface) !important; }
+menupopup, panel { --panel-background: var(--mx-deep) !important; --panel-color: var(--mx-fg) !important; }
