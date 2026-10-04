@@ -1,0 +1,51 @@
+/* ==========================================================================
+ * kitsunefox / discord — userChrome.css
+ * Custom Discord gray: blurple accent on Discord's classic dark grays.
+ * Matches Discord app chrome (#313338 / #1e1f22 / #2b2d31).
+ * ========================================================================== */
+
+:root {
+  --dc-bg:           #313338;
+  --dc-deep:         #1e1f22;
+  --dc-surface:      #2b2d31;
+  --dc-surface1:     #383a40;
+  --dc-fg:           #dbdee1;
+  --dc-muted:        #949ba4;
+  --dc-blurple:      #5865f2;
+  --dc-green:        #23a55a;
+  --dc-yellow:       #f0b232;
+  --dc-red:          #f23f43;
+  --dc-pink:         #eb459e;
+}
+
+:root {
+  --kitsune-accent: var(--dc-blurple);
+  --kitsune-accent-soft: color-mix(in srgb, var(--dc-blurple) 25%, transparent);
+}
+
+* { scrollbar-color: var(--dc-surface1) var(--dc-deep) !important; }
+
+#navigator-toolbox { background: var(--dc-deep) !important; border-bottom: 1px solid var(--dc-surface) !important; }
+#TabsToolbar { background: var(--dc-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--dc-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--dc-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--dc-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--dc-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--dc-red) !important; color: var(--dc-fg) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--dc-blurple) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--dc-surface) !important; }
+
+#nav-bar { background: var(--dc-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--dc-surface) !important; }
+#urlbar-background { background: var(--dc-deep) !important; border: 1px solid var(--dc-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--dc-fg) !important; }
+
+#PersonalToolbar { background: var(--dc-bg) !important; color: var(--dc-fg) !important; }
+#sidebar-box { background: var(--dc-deep) !important; }
+#sidebar-header { background: var(--dc-deep) !important; color: var(--dc-fg) !important; border-bottom: 1px solid var(--dc-surface) !important; }
+findbar { background: var(--dc-deep) !important; color: var(--dc-fg) !important; border-top: 1px solid var(--dc-surface) !important; }
+menupopup, panel { --panel-background: var(--dc-deep) !important; --panel-color: var(--dc-fg) !important; }

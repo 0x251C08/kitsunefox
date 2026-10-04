@@ -13,6 +13,10 @@ A hardened + themed Firefox configuration focused on privacy, reduced browser no
 
 It is **not** a Firefox fork and **not** a browser extension.
 
+## v0.6.0
+
+18 new themes: `nord-aurora` (Nord base + Aurora accents), `win95` (custom retro desktop), `rose-pine-moon`, `rose-pine-dawn`, `poimandres`, `nightfox`, `dayfox`, `oxocarbon`, `tomorrow-night`, `tomorrow-night-bright`, `hack` (custom green-phosphor), `tokyo-night-day`, `atom-one-dark`, `atom-one-light`, `discord` (custom), `discord-midnight` (custom), `modus-vivendi`, `modus-operandi`. 89 styles total (85 theme dirs + 4 Catppuccin root files).
+
 ## v0.5.0
 
 10 new compact themes: `vercel`, `matrix`, `orng`, `lucent-orng`, `flexoki`, `flexoki-dark`, `flexoki-light`, `synthwave84`, `aura`, `bit16` (custom retro-1980s CGA theme). 71 styles total (67 theme dirs + 4 Catppuccin root files).
@@ -97,12 +101,13 @@ The file documents every choice, including the full "left at default" list.
 
 ### Firefox interface themes
 
-kitsunefox includes 71 `userChrome.css` styles for Firefox's own interface (67 theme dirs + 4 Catppuccin root files).
+kitsunefox includes 89 `userChrome.css` styles for Firefox's own interface (85 theme dirs + 4 Catppuccin root files).
 
 | Theme | Vibe |
 |---|---|
 | `amberbyte` | warm amber |
 | `arc-blueberry` | Arc blue |
+| `atom-one-dark` / `atom-one-light` *(new in v0.6.0)* | Atom One Dark/Light |
 | `aura` *(new in v0.5.0)* | midnight violet glow |
 | `ayu` / `ayu-dark` / `ayu-light` / `ayu-mirage` | Ayu variants |
 | `base16` / `base16-light` | Base16 |
@@ -112,6 +117,8 @@ kitsunefox includes 71 `userChrome.css` styles for Firefox's own interface (67 t
 | `cp437-dos` *(new in v0.2.0)* | DOS amber/CP437 terminal |
 | `cyberpunk` | neon 2077 |
 | `darcula` *(new in v0.3.0)* | Darcula IDE |
+| `dayfox` *(new in v0.6.0)* | dayfox paper light |
+| `discord` / `discord-midnight` *(new in v0.6.0)* | custom Discord gray / blacked-out midnight |
 | `dotrb` *(new in v0.3.0)* | dot red-blue |
 | `dracula` *(new in v0.3.0)* | Dracula |
 | `everforest` | forest |
@@ -119,6 +126,7 @@ kitsunefox includes 71 `userChrome.css` styles for Firefox's own interface (67 t
 | `flexoki` / `flexoki-dark` / `flexoki-light` *(new in v0.5.0)* | Flexoki paper/dark/bright |
 | `github-dark` | GitHub dark |
 | `gruvbox` / `gruvbox-light` / `gruvbox-v2` / `gruvbox-material` *(new)* | Gruvbox variants |
+| `hack` *(new in v0.6.0)* | custom green-phosphor hacker |
 | `hackerman` *(new)* | green phosphor |
 | `jade-necklace` *(new in v0.3.0)* | jade green |
 | `japan-night` *(new in v0.3.0)* | Japan night |
@@ -127,29 +135,38 @@ kitsunefox includes 71 `userChrome.css` styles for Firefox's own interface (67 t
 | `lucent-orng` *(new in v0.5.0)* | cream tangerine |
 | `material3-expressive` *(new)* | M3 Expressive |
 | `matrix` *(new in v0.5.0)* | phosphor green |
+| `modus-operandi` / `modus-vivendi` *(new in v0.6.0)* | GNU Emacs Modus light/dark |
 | `monokai` | Monokai |
 | `moonlight` *(new)* | indigo moonlight |
 | `neo-sploosh` *(new in v0.3.0)* | neon sploosh |
+| `nightfox` *(new in v0.6.0)* | nightfox deep blue-gray |
 | `nord` | Nord |
+| `nord-aurora` *(new in v0.6.0)* | Nord + Aurora accents |
 | `oceanic-next` *(new)* | Oceanic Next |
 | `onedark` | One Dark |
 | `onedark-pro` *(new in v0.3.0)* | One Dark Pro |
 | `orng` *(new in v0.5.0)* | burnt ember orange |
 | `osaka-jade` | Osaka jade |
+| `oxocarbon` *(new in v0.6.0)* | IBM Carbon near-black |
+| `poimandres` *(new in v0.6.0)* | slate blue-black, mint-teal |
 | `rainbow` *(new in v0.3.0)* | rainbow |
 | `retro82` *(new)* | 80s synthwave |
 | `rose-pine` | Rosé Pine |
+| `rose-pine-dawn` / `rose-pine-moon` *(new in v0.6.0)* | Rosé Pine Dawn/Moon |
 | `sakura` *(new)* | #ff9cae soft pink |
 | `shades-of-jade` *(new in v0.3.0)* | jade shades |
 | `solarized` / `solarized-dark` / `solarized-light` / `solarized-osaka` *(new in v0.3.0)* | Solarized variants |
 | `solitude` | solitude |
 | `synthwave84` *(new in v0.5.0)* | outrun neon pink |
 | `tokyo-night` / `tokyo-night-storm` *(new)* | Tokyo Night variants |
+| `tokyo-night-day` *(new in v0.6.0)* | Tokyo Night Day |
+| `tomorrow-night` / `tomorrow-night-bright` *(new in v0.6.0)* | Tomorrow Night / Bright |
 | `travels` *(new in v0.3.0)* | travels |
 | `vantablack` | pure black |
 | `void` *(new in v0.3.0)* | void black |
 | `vs-code-dark` / `vs-code-dark-2019` / `vs-code-light` / `vs-code-light-2019` / `vs-code-minimal` / `vs-code-seti` *(new in v0.3.0)* | VS Code variants |
 | `vercel` *(new in v0.5.0)* | Geist monochrome |
+| `win95` *(new in v0.6.0)* | custom Windows-95 desktop |
 | `zenburn` *(new)* | low-contrast Zenburn |
 | `userChrome-frappe/latte/macchiato/mocha.css` | Catppuccin |
 

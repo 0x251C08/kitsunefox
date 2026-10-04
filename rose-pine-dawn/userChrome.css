@@ -1,0 +1,51 @@
+/* ==========================================================================
+ * kitsunefox / rose-pine-dawn — userChrome.css
+ * Rose Pine Dawn: warm paper light with rose accent.
+ * ========================================================================== */
+
+:root {
+  --rpd-base:        #faf4ed;
+  --rpd-deep:        #f2e9e1;
+  --rpd-surface:     #e7ddd3;
+  --rpd-surface1:    #dfdad9;
+  --rpd-fg:          #575279;
+  --rpd-muted:       #9893a5;
+  --rpd-love:        #b4637a;
+  --rpd-gold:        #ea9d34;
+  --rpd-rose:        #d7827e;
+  --rpd-pine:        #286983;
+  --rpd-foam:        #56949f;
+  --rpd-iris:        #907aa9;
+}
+
+:root {
+  --kitsune-accent: var(--rpd-rose);
+  --kitsune-accent-soft: color-mix(in srgb, var(--rpd-rose) 22%, transparent);
+}
+
+* { scrollbar-color: var(--rpd-surface1) var(--rpd-deep) !important; }
+
+#navigator-toolbox { background: var(--rpd-deep) !important; border-bottom: 1px solid var(--rpd-surface) !important; }
+#TabsToolbar { background: var(--rpd-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--rpd-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--rpd-base) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--rpd-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--rpd-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--rpd-love) !important; color: var(--rpd-base) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--rpd-pine) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--rpd-surface) !important; }
+
+#nav-bar { background: var(--rpd-base) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--rpd-surface) !important; }
+#urlbar-background { background: var(--rpd-deep) !important; border: 1px solid var(--rpd-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--rpd-fg) !important; }
+
+#PersonalToolbar { background: var(--rpd-base) !important; color: var(--rpd-fg) !important; }
+#sidebar-box { background: var(--rpd-deep) !important; }
+#sidebar-header { background: var(--rpd-deep) !important; color: var(--rpd-fg) !important; border-bottom: 1px solid var(--rpd-surface) !important; }
+findbar { background: var(--rpd-base) !important; color: var(--rpd-fg) !important; border-top: 1px solid var(--rpd-surface) !important; }
+menupopup, panel { --panel-background: var(--rpd-base) !important; --panel-color: var(--rpd-fg) !important; }

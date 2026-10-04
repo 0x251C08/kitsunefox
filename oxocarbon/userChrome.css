@@ -1,0 +1,51 @@
+/* ==========================================================================
+ * kitsunefox / oxocarbon — userChrome.css
+ * Oxocarbon (IBM Carbon): near-black with vivid blue/pink accents.
+ * ========================================================================== */
+
+:root {
+  --ox-bg:           #161616;
+  --ox-deep:         #0b0b0b;
+  --ox-surface:      #262626;
+  --ox-surface1:     #393939;
+  --ox-fg:           #f2f4f8;
+  --ox-muted:        #8d8d8d;
+  --ox-blue:         #33b1ff;
+  --ox-pink:         #ff7eb6;
+  --ox-red:          #ee5396;
+  --ox-green:        #42be65;
+  --ox-yellow:       #ffe97b;
+  --ox-cyan:         #3ddbd9;
+}
+
+:root {
+  --kitsune-accent: var(--ox-blue);
+  --kitsune-accent-soft: color-mix(in srgb, var(--ox-blue) 22%, transparent);
+}
+
+* { scrollbar-color: var(--ox-surface1) var(--ox-deep) !important; }
+
+#navigator-toolbox { background: var(--ox-deep) !important; border-bottom: 1px solid var(--ox-surface) !important; }
+#TabsToolbar { background: var(--ox-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--ox-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--ox-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--ox-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--ox-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--ox-red) !important; color: var(--ox-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--ox-cyan) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--ox-surface) !important; }
+
+#nav-bar { background: var(--ox-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--ox-surface) !important; }
+#urlbar-background { background: var(--ox-deep) !important; border: 1px solid var(--ox-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--ox-fg) !important; }
+
+#PersonalToolbar { background: var(--ox-bg) !important; color: var(--ox-fg) !important; }
+#sidebar-box { background: var(--ox-deep) !important; }
+#sidebar-header { background: var(--ox-deep) !important; color: var(--ox-fg) !important; border-bottom: 1px solid var(--ox-surface) !important; }
+findbar { background: var(--ox-deep) !important; color: var(--ox-fg) !important; border-top: 1px solid var(--ox-surface) !important; }
+menupopup, panel { --panel-background: var(--ox-deep) !important; --panel-color: var(--ox-fg) !important; }

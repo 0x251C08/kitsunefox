@@ -1,0 +1,49 @@
+/* ==========================================================================
+ * kitsunefox / win95 — userChrome.css
+ * Custom Windows-95 theme: silver chrome, navy title-bar active tab,
+ * teal toolbox edge, white fields, square corners, outset-style borders.
+ * ========================================================================== */
+
+:root {
+  --w95-silver:      #c0c0c0;
+  --w95-light:       #dfdfdf;
+  --w95-white:       #ffffff;
+  --w95-gray:        #808080;
+  --w95-dark:        #0a0a0a;
+  --w95-navy:        #000080;
+  --w95-teal:        #008080;
+  --w95-blue:        #0000ff;
+  --w95-red:         #ff0000;
+}
+
+:root {
+  --kitsune-accent: var(--w95-navy);
+  --kitsune-accent-soft: color-mix(in srgb, var(--w95-navy) 18%, transparent);
+}
+
+* { scrollbar-color: var(--w95-gray) var(--w95-silver) !important; }
+
+#navigator-toolbox { background: var(--w95-teal) !important; border-bottom: 2px solid var(--w95-silver) !important; }
+#TabsToolbar { background: var(--w95-silver) !important; }
+
+.tabbrowser-tab .tab-background { background: var(--w95-light) !important; border-radius: 0 !important; margin-block: 2px !important; border: 1px solid var(--w95-gray) !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--w95-white) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--w95-navy) !important; border-color: var(--w95-dark) !important; box-shadow: none !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--w95-white) !important; font-weight: 700 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--w95-dark) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--w95-red) !important; color: var(--w95-white) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--w95-navy) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--w95-light) !important; }
+
+#nav-bar { background: var(--w95-silver) !important; box-shadow: none !important; border-top: 1px solid var(--w95-white) !important; }
+#urlbar { --urlbar-box-bgcolor: var(--w95-white) !important; }
+#urlbar-background { background: var(--w95-white) !important; border: 1px solid var(--w95-gray) !important; border-radius: 0 !important; box-shadow: inset 1px 1px 0 var(--w95-gray) !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--w95-dark) !important; }
+
+#PersonalToolbar { background: var(--w95-silver) !important; color: var(--w95-dark) !important; }
+#sidebar-box { background: var(--w95-silver) !important; }
+#sidebar-header { background: var(--w95-navy) !important; color: var(--w95-white) !important; border-bottom: 1px solid var(--w95-gray) !important; }
+findbar { background: var(--w95-silver) !important; color: var(--w95-dark) !important; border-top: 1px solid var(--w95-white) !important; }
+menupopup, panel { --panel-background: var(--w95-silver) !important; --panel-color: var(--w95-dark) !important; }
