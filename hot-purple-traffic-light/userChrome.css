@@ -1,0 +1,49 @@
+/* ==========================================================================
+ * kitsunefox / hot-purple-traffic-light — userChrome.css
+ * Hot purple chrome with macOS traffic-light signals (red/yellow/green).
+ * ========================================================================== */
+
+:root {
+  --hptl-bg:         #20062e;
+  --hptl-deep:       #150418;
+  --hptl-surface:    #3d1157;
+  --hptl-surface1:   #5a1e7d;
+  --hptl-fg:         #f5e6ff;
+  --hptl-muted:      #9a7bb5;
+  --hptl-hot:        #e040fb;
+  --hptl-red:        #ff5f57;
+  --hptl-yellow:     #febc2e;
+  --hptl-green:      #28c840;
+}
+
+:root {
+  --kitsune-accent: var(--hptl-hot);
+  --kitsune-accent-soft: color-mix(in srgb, var(--hptl-hot) 22%, transparent);
+}
+
+* { scrollbar-color: var(--hptl-surface1) var(--hptl-deep) !important; }
+
+#navigator-toolbox { background: var(--hptl-deep) !important; border-bottom: 1px solid var(--hptl-surface) !important; }
+#TabsToolbar { background: var(--hptl-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--hptl-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--hptl-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--hptl-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--hptl-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--hptl-red) !important; color: var(--hptl-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--hptl-yellow) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--hptl-surface) !important; }
+
+#nav-bar { background: var(--hptl-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--hptl-surface) !important; }
+#urlbar-background { background: var(--hptl-deep) !important; border: 1px solid var(--hptl-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--hptl-fg) !important; }
+
+#PersonalToolbar { background: var(--hptl-bg) !important; color: var(--hptl-fg) !important; }
+#sidebar-box { background: var(--hptl-deep) !important; }
+#sidebar-header { background: var(--hptl-deep) !important; color: var(--hptl-fg) !important; border-bottom: 1px solid var(--hptl-surface) !important; }
+findbar { background: var(--hptl-deep) !important; color: var(--hptl-fg) !important; border-top: 1px solid var(--hptl-surface) !important; }
+menupopup, panel { --panel-background: var(--hptl-deep) !important; --panel-color: var(--hptl-fg) !important; }

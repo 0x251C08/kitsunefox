@@ -1,0 +1,52 @@
+/* ==========================================================================
+ * kitsunefox / night-owl — userChrome.css
+ * Night Owl: deep ocean dark with bright owl-blue accent.
+ * ========================================================================== */
+
+:root {
+  --no-bg:           #011627;
+  --no-deep:         #000b14;
+  --no-surface:      #0b2942;
+  --no-surface1:     #1d3b53;
+  --no-fg:           #d6deeb;
+  --no-muted:        #637777;
+  --no-blue:         #82aaff;
+  --no-cyan:         #7fdbca;
+  --no-yellow:       #ffd602;
+  --no-orange:       #f78c6c;
+  --no-red:          #ef5350;
+  --no-purple:       #c792ea;
+  --no-green:        #addb67;
+}
+
+:root {
+  --kitsune-accent: var(--no-blue);
+  --kitsune-accent-soft: color-mix(in srgb, var(--no-blue) 22%, transparent);
+}
+
+* { scrollbar-color: var(--no-surface1) var(--no-deep) !important; }
+
+#navigator-toolbox { background: var(--no-deep) !important; border-bottom: 1px solid var(--no-surface) !important; }
+#TabsToolbar { background: var(--no-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--no-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--no-surface) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--no-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--no-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--no-red) !important; color: var(--no-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--no-cyan) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--no-surface) !important; }
+
+#nav-bar { background: var(--no-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--no-surface) !important; }
+#urlbar-background { background: var(--no-deep) !important; border: 1px solid var(--no-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--no-fg) !important; }
+
+#PersonalToolbar { background: var(--no-bg) !important; color: var(--no-fg) !important; }
+#sidebar-box { background: var(--no-deep) !important; }
+#sidebar-header { background: var(--no-deep) !important; color: var(--no-fg) !important; border-bottom: 1px solid var(--no-surface) !important; }
+findbar { background: var(--no-deep) !important; color: var(--no-fg) !important; border-top: 1px solid var(--no-surface) !important; }
+menupopup, panel { --panel-background: var(--no-deep) !important; --panel-color: var(--no-fg) !important; }

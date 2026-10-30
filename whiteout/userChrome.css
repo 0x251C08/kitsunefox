@@ -1,0 +1,46 @@
+/* ==========================================================================
+ * kitsunefox / whiteout — userChrome.css
+ * Whiteout: pure-white monochrome light, black accent, zero color.
+ * ========================================================================== */
+
+:root {
+  --wo-bg:           #ffffff;
+  --wo-deep:         #f2f2f2;
+  --wo-surface:      #e4e4e4;
+  --wo-surface1:     #c4c4c4;
+  --wo-fg:           #1a1a1a;
+  --wo-muted:        #808080;
+  --wo-black:        #1a1a1a;
+}
+
+:root {
+  --kitsune-accent: var(--wo-black);
+  --kitsune-accent-soft: color-mix(in srgb, var(--wo-black) 15%, transparent);
+}
+
+* { scrollbar-color: var(--wo-surface1) var(--wo-deep) !important; }
+
+#navigator-toolbox { background: var(--wo-deep) !important; border-bottom: 1px solid var(--wo-surface) !important; }
+#TabsToolbar { background: var(--wo-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--wo-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--wo-bg) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--wo-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--wo-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--wo-black) !important; color: var(--wo-bg) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--wo-muted) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--wo-surface) !important; }
+
+#nav-bar { background: var(--wo-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--wo-surface) !important; }
+#urlbar-background { background: var(--wo-deep) !important; border: 1px solid var(--wo-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--wo-fg) !important; }
+
+#PersonalToolbar { background: var(--wo-bg) !important; color: var(--wo-fg) !important; }
+#sidebar-box { background: var(--wo-deep) !important; }
+#sidebar-header { background: var(--wo-deep) !important; color: var(--wo-fg) !important; border-bottom: 1px solid var(--wo-surface) !important; }
+findbar { background: var(--wo-bg) !important; color: var(--wo-fg) !important; border-top: 1px solid var(--wo-surface) !important; }
+menupopup, panel { --panel-background: var(--wo-bg) !important; --panel-color: var(--wo-fg) !important; }

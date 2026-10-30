@@ -1,0 +1,48 @@
+/* ==========================================================================
+ * kitsunefox / paper — userChrome.css
+ * Paper: flat Material-paper light with bright blue accent.
+ * ========================================================================== */
+
+:root {
+  --pa-bg:           #eeeeee;
+  --pa-deep:         #e0e0e0;
+  --pa-surface:      #d2d2d2;
+  --pa-surface1:     #b5b5b5;
+  --pa-fg:           #444444;
+  --pa-muted:        #8e8e8e;
+  --pa-blue:         #1e88e5;
+  --pa-red:          #e53935;
+  --pa-green:        #43a047;
+}
+
+:root {
+  --kitsune-accent: var(--pa-blue);
+  --kitsune-accent-soft: color-mix(in srgb, var(--pa-blue) 18%, transparent);
+}
+
+* { scrollbar-color: var(--pa-surface1) var(--pa-deep) !important; }
+
+#navigator-toolbox { background: var(--pa-deep) !important; border-bottom: 1px solid var(--pa-surface) !important; }
+#TabsToolbar { background: var(--pa-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--pa-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--pa-bg) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--pa-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--pa-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--pa-red) !important; color: var(--pa-bg) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--pa-green) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--pa-surface) !important; }
+
+#nav-bar { background: var(--pa-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--pa-surface) !important; }
+#urlbar-background { background: var(--pa-deep) !important; border: 1px solid var(--pa-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--pa-fg) !important; }
+
+#PersonalToolbar { background: var(--pa-bg) !important; color: var(--pa-fg) !important; }
+#sidebar-box { background: var(--pa-deep) !important; }
+#sidebar-header { background: var(--pa-deep) !important; color: var(--pa-fg) !important; border-bottom: 1px solid var(--pa-surface) !important; }
+findbar { background: var(--pa-bg) !important; color: var(--pa-fg) !important; border-top: 1px solid var(--pa-surface) !important; }
+menupopup, panel { --panel-background: var(--pa-bg) !important; --panel-color: var(--pa-fg) !important; }
