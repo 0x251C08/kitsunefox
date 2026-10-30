@@ -5,13 +5,13 @@
  * ========================================================================== */
 
 :root {
-  --ae-bg:           #e3f2fd;   /* lightest — page, nav bar, selected tab, panels */
-  --ae-deep:         #42a5f5;   /* toolbox, tab bar, sidebar, urlbar bg — sky */
-  --ae-surface:      #1e88e5;   /* hover steps, urlbar box — deeper sky */
-  --ae-surface1:     #0d47a1;   /* deepest — focus rings, active buttons */
-  --ae-fg:           #0d47a1;   /* dark text — max visibility on light sky */
-  --ae-muted:        #546e7a;   /* muted text */
-  --ae-sky:          #2196f3;   /* accent — vivid sky */
+  --ae-bg:           #e8f5ff;   /* lightest — page, nav bar, selected tab, panels */
+  --ae-deep:         #b3d9ff;   /* toolbox, tab bar, sidebar, urlbar bg — light sky */
+  --ae-surface:      #93c4ff;   /* hover steps, urlbar box — deeper sky */
+  --ae-surface1:     #73afff;   /* deepest — focus rings, active buttons */
+  --ae-fg:           #245a99;   /* dark text — visible on light sky */
+  --ae-muted:        #7d9fc0;   /* muted text */
+  --ae-sky:          #5aa9ff;   /* accent — sky blue */
   --ae-sun:          #ffd54f;
   --ae-horizon:      #ff8a65;
   --ae-cloud:        #eceff1;
