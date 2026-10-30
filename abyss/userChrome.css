@@ -1,0 +1,48 @@
+/* ==========================================================================
+ * kitsunefox / abyss — userChrome.css
+ * Custom abyss theme: pitch-dark chromeless void with faint deep-blue
+ * rim-light. No standard reference; custom.
+ * ========================================================================== */
+
+:root {
+  --ab-bg:           #050507;
+  --ab-deep:         #000000;
+  --ab-surface:      #0f0f14;
+  --ab-surface1:     #1a1a24;
+  --ab-fg:           #c8cfe0;
+  --ab-muted:        #5a5f6e;
+  --ab-rim:          #1e3a8a;
+  --ab-ink:          #0a0a0c;
+}
+
+:root {
+  --kitsune-accent: var(--ab-rim);
+  --kitsune-accent-soft: color-mix(in srgb, var(--ab-rim) 22%, transparent);
+}
+
+* { scrollbar-color: var(--ab-surface1) var(--ab-deep) !important; }
+
+#navigator-toolbox { background: var(--ab-deep) !important; border-bottom: 1px solid var(--ab-surface) !important; }
+#TabsToolbar { background: var(--ab-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 6px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--ab-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--ab-surface) !important; border: 1px solid var(--ab-surface1) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--ab-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--ab-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--ab-rim) !important; color: var(--ab-deep) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--ab-fg) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--ab-surface) !important; }
+
+#nav-bar { background: var(--ab-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--ab-surface) !important; }
+#urlbar-background { background: var(--ab-deep) !important; border: 1px solid var(--ab-surface1) !important; border-radius: 6px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--ab-fg) !important; }
+
+#PersonalToolbar { background: var(--ab-bg) !important; color: var(--ab-fg) !important; }
+#sidebar-box { background: var(--ab-deep) !important; }
+#sidebar-header { background: var(--ab-deep) !important; color: var(--ab-fg) !important; border-bottom: 1px solid var(--ab-surface) !important; }
+findbar { background: var(--ab-deep) !important; color: var(--ab-fg) !important; border-top: 1px solid var(--ab-surface) !important; }
+menupopup, panel { --panel-background: var(--ab-deep) !important; --panel-color: var(--ab-fg) !important; }

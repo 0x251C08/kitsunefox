@@ -1,0 +1,49 @@
+/* ==========================================================================
+ * kitsunefox / aetheria — userChrome.css
+ * Aetheria: ethereal light airy theme — misty pale blue, soft lavender.
+ * Palette is a best-effort interpretation (no official source located).
+ * ========================================================================== */
+
+:root {
+  --at-bg:           #f5f7fa;
+  --at-deep:         #e9ecf1;
+  --at-surface:      #dde3ea;
+  --at-surface1:     #c8d0da;
+  --at-fg:           #3a4252;
+  --at-muted:        #8a93a5;
+  --at-mist:         #b9c4d4;
+  --at-lavender:     #a29bfe;
+  --at-pearl:        #f1f4f8;
+}
+
+:root {
+  --kitsune-accent: var(--at-mist);
+  --kitsune-accent-soft: color-mix(in srgb, var(--at-mist) 18%, transparent);
+}
+
+* { scrollbar-color: var(--at-surface1) var(--at-deep) !important; }
+
+#navigator-toolbox { background: var(--at-deep) !important; border-bottom: 1px solid var(--at-surface) !important; }
+#TabsToolbar { background: var(--at-deep) !important; }
+
+.tabbrowser-tab .tab-background { background: transparent !important; border-radius: 8px !important; margin-block: 3px !important; }
+.tabbrowser-tab:hover .tab-background { background: var(--at-surface) !important; }
+.tabbrowser-tab[selected="true"] .tab-background { background: var(--at-bg) !important; box-shadow: inset 0 2px 0 0 var(--kitsune-accent) !important; }
+.tabbrowser-tab[selected="true"] .tab-label { color: var(--at-fg) !important; font-weight: 600 !important; }
+.tabbrowser-tab:not([selected="true"]) .tab-label { color: var(--at-muted) !important; }
+.tabbrowser-tab::before, .tabbrowser-tab::after { display: none !important; }
+.tab-close-button:hover { background: var(--at-lavender) !important; color: var(--at-bg) !important; }
+.tab-icon-overlay, .tab-icon-sound { color: var(--at-lavender) !important; }
+#tabs-newtab-button:hover, #alltabs-button:hover { background: var(--at-surface) !important; }
+
+#nav-bar { background: var(--at-bg) !important; box-shadow: none !important; }
+#urlbar { --urlbar-box-bgcolor: var(--at-surface) !important; }
+#urlbar-background { background: var(--at-deep) !important; border: 1px solid var(--at-surface) !important; border-radius: 8px !important; }
+#urlbar[focused="true"] #urlbar-background { border-color: var(--kitsune-accent) !important; box-shadow: 0 0 0 1px var(--kitsune-accent-soft) !important; }
+#urlbar-input { color: var(--at-fg) !important; }
+
+#PersonalToolbar { background: var(--at-bg) !important; color: var(--at-fg) !important; }
+#sidebar-box { background: var(--at-deep) !important; }
+#sidebar-header { background: var(--at-deep) !important; color: var(--at-fg) !important; border-bottom: 1px solid var(--at-surface) !important; }
+findbar { background: var(--at-bg) !important; color: var(--at-fg) !important; border-top: 1px solid var(--at-surface) !important; }
+menupopup, panel { --panel-background: var(--at-bg) !important; --panel-color: var(--at-fg) !important; }
